@@ -79,6 +79,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   box-shadow:0 6px 18px rgba(0,0,0,.28)}
 .pkt.live{border-color:var(--l6);box-shadow:0 0 0 2px color-mix(in srgb,var(--l6) 45%,transparent),0 6px 18px rgba(0,0,0,.3)}
 .pkt .lbl{font-size:15px;font-weight:600;white-space:nowrap}
+.qual{display:block;font-style:normal;font-size:12.5px;color:var(--l6);font-weight:500;letter-spacing:.01em}
 .pkt .alias{font-size:11px;color:var(--muted);letter-spacing:.04em}
 .pkt .typed{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--l6);min-height:17px;letter-spacing:2px}
 .pkt.pop{animation:pop .25s forwards}
@@ -293,6 +294,41 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 .qopt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,transparent)}
 .prog{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);margin-bottom:9px}
 
+/* overlays */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(6,10,16,.72);display:flex;align-items:flex-end;justify-content:center;
+  padding:0;backdrop-filter:blur(3px)}
+.ov[hidden]{display:none}
+.ovbox{background:var(--paper);border:1px solid var(--line);border-radius:16px 16px 0 0;width:100%;max-width:660px;
+  max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
+@media(min-width:680px){.ov{align-items:center}.ovbox{border-radius:16px;max-height:84vh}}
+.ovtop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.ovtop b{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;letter-spacing:-.01em}
+.ovbody{overflow-y:auto;padding:14px 16px 24px;-webkit-overflow-scrolling:touch}
+.ovbody p{margin:0 0 10px;font-size:14.5px;line-height:1.5}
+.ovbody h3{font-family:"Bricolage Grotesque",sans-serif;font-size:15px;margin:16px 0 6px}
+.ovbody h3:first-child{margin-top:0}
+.ovbody ul{margin:0 0 12px;padding-left:19px;font-size:14.5px;line-height:1.55}
+.ovbody li{margin-bottom:4px}
+.ovbody .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 11px;font-size:14px;margin-bottom:12px;align-items:baseline}
+.ovbody .kv b{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--l6);white-space:nowrap}
+.note{background:var(--card);border-left:3px solid var(--l3);border-radius:0 9px 9px 0;padding:9px 12px;font-size:13.5px;color:var(--muted);margin-bottom:12px}
+.pv{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;background:var(--card2);border:1px solid var(--line);
+  border-radius:99px;padding:2px 9px;margin-bottom:10px;color:var(--muted)}
+.qbtn{position:absolute;top:8px;right:9px;width:25px;height:25px;border-radius:99px;border:1px solid var(--line);
+  background:var(--card2);color:var(--muted);font-size:13px;font-weight:700;display:grid;place-items:center;z-index:2}
+.qbtn:hover{color:var(--ink);border-color:var(--c)}
+.game{position:relative}
+.revsw{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:11px 13px;margin-top:12px;text-align:left;width:100%}
+.revsw .sw2{width:40px;height:23px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.revsw .sw2::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:99px;background:var(--muted);transition:left .15s,background .15s}
+.revsw.on .sw2{background:color-mix(in srgb,var(--ok) 45%,transparent)}
+.revsw.on .sw2::after{left:20px;background:var(--ok)}
+.revsw .t2{flex:1;min-width:0}
+.revsw b{display:block;font-size:14.5px}
+.revsw small{display:block;color:var(--muted);font-size:12.5px;line-height:1.3}
+.dot9{position:absolute;top:-2px;right:-2px;width:9px;height:9px;border-radius:99px;background:var(--bad);border:2px solid var(--paper)}
+
 /* manuel */
 .man h2{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;margin:22px 0 4px}
 .man .step{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);
@@ -361,6 +397,8 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 .led.on{background:var(--bad);border-color:var(--bad);box-shadow:0 0 8px var(--bad)}
 
 /* memory */
+.memhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;font-size:13.5px;color:var(--muted)}
+.memhead b{color:var(--l6);font-family:"IBM Plex Mono",monospace}
 .mem{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .memc{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px 9px;min-height:66px;
   font-size:12.5px;line-height:1.3;display:grid;place-items:center;text-align:center}
@@ -387,6 +425,7 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
     <h1>Nuit Blanche</h1>
     <div style="display:flex;gap:7px">
       <button class="iconbtn" id="sndBtn" title="Son">🔊</button>
+      <button class="iconbtn" id="newsBtn" title="Nouveautés" style="position:relative">🎁</button>
       <button class="iconbtn" id="thBtn" title="Thème">◐</button>
     </div>
   </div>
@@ -427,6 +466,8 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
       <span><b>Cellule de crise</b><span>Une menace attaque le SI. Joue la bonne carte outil à chaque symptôme pour la faire tomber.</span><span class="best" id="b-soc"></span></span>
     </button>
   </div>
+
+  <button class="revsw" id="revSw"><span class="sw2"></span><span class="t2"><b>Version révision</b><small>Un bouton 📋 apparaît pendant les parties : il ouvre la fiche de notes où se trouve la réponse. Le chrono se met en pause, et les records ne sont pas enregistrés.</small></span></button>
 
   <div class="row">
     <button class="ghost" id="openZen">🧘 Mode zen</button>
@@ -617,6 +658,13 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 
 </div>
 
+<div class="ov" id="ov" hidden>
+  <div class="ovbox">
+    <div class="ovtop"><b id="ovTitle"></b><button class="iconbtn" id="ovClose" title="Fermer">✕</button></div>
+    <div class="ovbody" id="ovBody"></div>
+  </div>
+</div>
+
 <script>
 /* =======================================================
    DONNÉES
@@ -690,6 +738,21 @@ const PORTS=[
  {s:"OpenVPN",p:"1194",c:"VPN open source, en udp par défaut."}
 ];
 PORTS.forEach(p => p.nums = (p.p.match(/\d+/g) || []));
+const PORTQ={
+ "bootps / bootpc":{"67":"côté serveur","68":"côté client"},
+ "ftp":{"20":"données","21":"contrôle"},
+ "ftps":{"989":"données","990":"contrôle"},
+ "netbios":{"137":"name service","138":"datagram service","139":"session service"},
+ "radius":{"1812":"demande d'accès","1813":"connexion serveur"},
+ "SMTP sécurisé":{"465":"SMTPS implicite","587":"soumission"}
+};
+const multi=p=>p.nums.length>1&&PORTQ[p.s];
+function askPort(p,forced){
+  if(!multi(p))return{n:p.nums[0],q:"",lbl:p.s,full:p.s};
+  const n=forced||p.nums[(Math.random()*p.nums.length)|0],q=PORTQ[p.s][n];
+  return{n,q,lbl:`${p.s} <em class="qual">${q}</em>`,full:`${p.s} (${q})`};
+}
+const portLine=p=>multi(p)?p.nums.map(n=>`${n} = ${PORTQ[p.s][n]}`).join(" · "):p.p;
 
 const OSI=[
  {n:1,nom:"Physique",role:"Encodage du signal, câblage et connecteurs, spécifications physiques."},
@@ -734,6 +797,15 @@ const weak=(list,key)=>{const w=list.filter(x=>{const m=DB.m[key(x)];return !m||
 const RANKS=[[0,"Stagiaire","🎓"],[600,"Technicien","🔧"],[1800,"Administrateur","🖥️"],[4000,"Ingénieur sécurité","🛡️"],[8000,"RSSI","👑"]];
 function rank(){let r=RANKS[0],nx=null;for(let i=0;i<RANKS.length;i++){if(DB.xp>=RANKS[i][0]){r=RANKS[i];nx=RANKS[i+1]||null}}return{r,nx}}
 
+let PAUSED=false,pauseT0=0;
+function pauseAll(){if(PAUSED)return;PAUSED=true;pauseT0=Date.now()}
+function resumeAll(){
+  if(!PAUSED)return;const d=Date.now()-pauseT0;PAUSED=false;
+  if(typeof SO!=="undefined"&&SO&&SO.start)SO.start+=d;
+  if(typeof MA!=="undefined"&&MA)MA.last=0;
+  if(typeof FW!=="undefined"&&FW){FW.last=0;FW.lastSpawn=0}
+  if(typeof OS!=="undefined"&&OS)OS.last=0;
+}
 let muted=false,AC=null;
 function beep(f,d,type){
   if(muted)return;
@@ -764,10 +836,11 @@ function endRun(){
   cancelAnimationFrame(raf);raf=null;
   const xp=Math.round(S.score/4)+S.hits*3;
   DB.xp+=xp;
-  if(S.score>(DB.best[S.kind]||0))DB.best[S.kind]=S.score;
+  const rev=!!DB.rev;
+  if(!rev&&S.score>(DB.best[S.kind]||0))DB.best[S.kind]=S.score;
   save();
   $("#endScore").textContent=S.score;
-  $("#endSub").textContent=(S.note?S.note+" · ":"")+`${S.hits} bonnes réponses · record : ${DB.best[S.kind]}`;
+  $("#endSub").textContent=(S.note?S.note+" · ":"")+`${S.hits} bonnes réponses · ${rev?"version révision, record non enregistré":"record : "+(DB.best[S.kind]||0)}`;
   $("#endXp").textContent=`+${xp} XP`;
   $("#errTitle").style.display=S.errors.length?"block":"none";
   $("#errList").innerHTML=S.errors.slice(0,12).map(e=>`<div class="err"><div class="q">${e.q}</div><div class="a">${e.a}</div></div>`).join("");
@@ -783,7 +856,7 @@ let FW=null;
 function startFW(){
   newSession("fw");
   const f=$("#fwField");f.querySelectorAll(".pkt").forEach(e=>e.remove());
-  FW={pkts:[],last:0,spawn:3200,pool:shuffle(weak(PORTS,p=>"port:"+p.s))};
+  FW={pkts:[],last:0,spawn:4200,pool:shuffle(weak(PORTS,p=>"port:"+p.s))};
   show("fw");hudFW();
   $("#fwToast").className="toast empty";
   $("#fwToast").textContent="Tape le port du paquet le plus bas, puis OK.";
@@ -804,17 +877,19 @@ function spawnFW(){
   el.className="pkt";el.style.setProperty("--c","var(--l6)");
   el.style.left=(18+Math.random()*64)+"%";el.style.top="-60px";
   const alias=p.al&&Math.random()<.4?p.al.split(",")[0].trim():null;
-  el.innerHTML=`<div class="lbl">${alias||p.s}</div>${alias?`<div class="alias">alias</div>`:""}<div class="typed"></div>`;
+  const tgt=askPort(p);
+  el.innerHTML=`<div class="lbl">${alias||p.s}</div>${tgt.q?`<div class="alias">${tgt.q}</div>`:alias?`<div class="alias">alias</div>`:""}<div class="typed"></div>`;
   f.appendChild(el);
-  FW.pkts.push({el,y:-60,p,typed:"",alias});
+  FW.pkts.push({el,y:-60,p,typed:"",alias,tgt});
 }
 function stepFW(ts){
   if(!S||S.kind!=="fw")return;
+  if(PAUSED){FW.last=ts;FW.lastSpawn=ts;raf=requestAnimationFrame(stepFW);return}
   if(!FW.last)FW.last=ts;
   const dt=Math.min(60,ts-FW.last);FW.last=ts;
   const H=$("#fwField").clientHeight;
-  const speed=(13+S.wave*3.2)/1000;
-  const maxi=Math.min(5,1+Math.floor(S.wave/2));
+  const speed=(11+S.wave*2.6)/1000;
+  const maxi=Math.min(3,1+Math.floor(S.wave/4));
   if(ts-(FW.lastSpawn||0)>FW.spawn&&FW.pkts.length<maxi){FW.lastSpawn=ts;spawnFW()}
   FW.pkts.forEach(k=>{
     k.y+=speed*dt;k.el.style.top=k.y+"px";
@@ -822,7 +897,7 @@ function stepFW(ts){
       k.dead=true;k.el.classList.add("kaboom");setTimeout(()=>k.el.remove(),300);
       loseHp();mark("port:"+k.p.s,false);
       S.errors.push({q:k.p.s,a:k.p.p});
-      fiche($("#fwToast"),`<b>${k.alias?k.alias+" = "+k.p.s:k.p.s} → ${k.p.p}.</b> ${k.p.c}`);
+      fiche($("#fwToast"),`<b>${k.alias?k.alias+" = "+k.p.s:k.p.s}${k.tgt.q?" ("+k.tgt.q+")":""} → ${k.tgt.n}.</b> ${multi(k.p)?portLine(k.p)+". ":""}${k.p.c}`);
       $("#fwField").classList.add("hit");$("#fwFlash").classList.add("go");
       setTimeout(()=>{$("#fwField").classList.remove("hit");$("#fwFlash").classList.remove("go")},360);
     }
@@ -842,17 +917,17 @@ function padType(d){
 }
 function padSend(){
   const k=FW&&FW.pkts[0];if(!k||!k.typed)return;
-  const ok=k.p.nums.includes(k.typed);
+  const ok=k.typed===k.tgt.n;
   if(ok){
     k.dead=true;FW.pkts.shift();k.el.classList.add("pop");setTimeout(()=>k.el.remove(),260);
-    addScore(20+k.p.nums.length*5);S.hits++;mark("port:"+k.p.s,true);sGood();
-    fiche($("#fwToast"),`<b>${k.alias?k.alias+" = "+k.p.s:k.p.s} → ${k.p.p}.</b> ${k.p.c}`);
-    if(S.hits%6===0){S.wave++;FW.spawn=Math.max(1250,FW.spawn-190)}
+    addScore(20+(k.tgt.q?10:0));S.hits++;mark("port:"+k.p.s,true);sGood();
+    fiche($("#fwToast"),`<b>${k.alias?k.alias+" = "+k.p.s:k.p.s}${k.tgt.q?" ("+k.tgt.q+")":""} → ${k.tgt.n}.</b> ${multi(k.p)?portLine(k.p)+". ":""}${k.p.c}`);
+    if(S.hits%6===0){S.wave++;FW.spawn=Math.max(1900,FW.spawn-200)}
   }else{
     k.typed="";k.el.querySelector(".typed").textContent="";
     k.el.classList.add("pkt");S.combo=1;S.streak=0;sBad();
     $("#fwField").classList.add("hit");setTimeout(()=>$("#fwField").classList.remove("hit"),320);
-    fiche($("#fwToast"),`Pas ce port. Indice : commence par <b>${k.p.nums[0][0]}</b> et compte ${k.p.nums[0].length} chiffres.`);
+    fiche($("#fwToast"),`Pas ce port. Indice : ${k.tgt.n.length} chiffres, commence par <b>${k.tgt.n[0]}</b>.`);
   }
   hudFW();
 }
@@ -898,6 +973,7 @@ function nextOSI(){
 }
 function stepOSI(ts){
   if(!S||S.kind!=="osi")return;
+  if(PAUSED){OS.last=ts;raf=requestAnimationFrame(stepOSI);return}
   if(!OS.last)OS.last=ts;
   const dt=Math.min(60,ts-OS.last);OS.last=ts;
   const H=$("#osiField").clientHeight-$("#stack").clientHeight-14;
@@ -976,6 +1052,7 @@ function nextSOC(){
   SO.t=dur;SO.start=Date.now();
   $("#socTimer").style.width="100%";
   SO.ti=setInterval(()=>{
+    if(PAUSED)return;
     const left=dur-(Date.now()-SO.start);
     $("#socTimer").style.width=Math.max(0,left/dur*100)+"%";
     if(left<=0){clearInterval(SO.ti);playCard(null)}
@@ -1070,6 +1147,7 @@ function startRED(){
   clearInterval(redTi);redTi=setInterval(tickRED,100);
 }
 function tickRED(){
+  if(PAUSED)return;
   RD.left-=100;
   const s=Math.max(0,RD.left/1000);
   $("#redClock").textContent=Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
@@ -1194,12 +1272,13 @@ function taskKeypad(){
   let n=0,typed="",cur=null;
   const pool=shuffle(weak(PORTS,p=>"port:"+p.s));
   const keys=["1","2","3","4","5","6","7","8","9","del","0","ok"];
-  const take=()=>{cur=pool.pop()||PORTS[(Math.random()*PORTS.length)|0];typed=""};
+  let tgt=null;
+  const take=()=>{cur=pool.pop()||PORTS[(Math.random()*PORTS.length)|0];tgt=askPort(cur);typed=""};
   const paint=()=>{
     $("#taskbox").innerHTML=`
       <div class="tname">Code d'accès de la salle serveur</div>
       <div class="tsub">Trois ports à saisir. ${n} sur 3 validés.</div>
-      <div class="subject">${cur.s}
+      <div class="subject">${tgt.lbl}
         <div class="mono" style="font-size:23px;color:var(--l6);letter-spacing:5px;min-height:30px">${typed||"·····"}</div></div>
       <div class="pad">${keys.map(k=>k==="del"?`<button class="key del" data-k="del">⌫</button>`
         :k==="ok"?`<button class="key send" data-k="ok">OK</button>`
@@ -1210,13 +1289,13 @@ function taskKeypad(){
     if(k==="del")typed=typed.slice(0,-1);
     else if(k==="ok"){
       if(!typed)return;
-      if(cur.nums.includes(typed)){
-        n++;mark("port:"+cur.s,true);reward(40,`<b>${cur.s} → ${cur.p}.</b> ${cur.c}`);
+      if(typed===tgt.n){
+        n++;mark("port:"+cur.s,true);reward(40,`<b>${tgt.full} → ${tgt.n}.</b> ${portLine(cur)}. ${cur.c}`);
         if(n>=3){typed="";paint();return setTimeout(taskDone,600)}
         take();
       }else{
         mark("port:"+cur.s,false);
-        penalty(3000,`<b>${cur.s} → ${cur.p}.</b> ${cur.c}`,{q:cur.s,a:cur.p});
+        penalty(3000,`<b>${tgt.full} → ${tgt.n}.</b> ${portLine(cur)}. ${cur.c}`,{q:tgt.full,a:tgt.n});
         typed="";
       }
     }else if(typed.length<5){typed+=k;sPop()}
@@ -1400,23 +1479,24 @@ run(h,api){
 /* 4 — Divert Power : 10 interrupteurs */
 MG.power={nom:"Dérivation de l'alimentation",sub:"Baisse l'interrupteur portant le port du service demandé.",
 run(h,api){
-  const lot=deal("power",PORTS,10),cibles=shuffle(lot).slice(0,5);let i=0;
+  const lot=deal("power",PORTS,10).map(p=>({p,t:askPort(p)}));
+  const cibles=shuffle(lot).slice(0,5);let i=0;
   const paint=()=>{
     const c=cibles[i];
     h.innerHTML=`<div class="tname">${MG.power.nom}</div><div class="tsub">${MG.power.sub}</div>
       <div class="prog">${i} sur 5</div>
-      <div class="qbig">Router le service <span class="s">${c.s}</span></div>
-      <div class="sw">${lot.map(p=>`<button class="swb" data-s="${p.s}"><i></i>${p.nums[0]}</button>`).join("")}</div>`;
+      <div class="qbig">Router le service <span class="s">${c.t.lbl}</span></div>
+      <div class="sw">${lot.map(x=>`<button class="swb" data-n="${x.t.n}"><i></i>${x.t.n}</button>`).join("")}</div>`;
     h.querySelectorAll(".swb").forEach(b=>b.onclick=()=>{
       if(b.disabled)return;
-      if(b.dataset.s===c.s){
+      if(b.dataset.n===c.t.n){
         b.classList.add("on");h.querySelectorAll(".swb").forEach(x=>x.disabled=true);
-        api.good(`<b>${c.s} → ${c.p}.</b> ${c.c}`);
+        api.good(`<b>${c.t.full} → ${c.t.n}.</b> ${portLine(c.p)}. ${c.p.c}`);
         i++;setTimeout(()=>i>=5?api.end():paint(),520);
       }else{
         b.classList.add("no");setTimeout(()=>b.classList.remove("no"),330);
-        const w=lot.find(p=>p.s===b.dataset.s);
-        api.bad(`<b>${w.nums[0]} c'est ${w.s}.</b> ${c.s} écoute sur ${c.p}.`,{q:c.s,a:c.p});
+        const w=lot.find(x=>x.t.n===b.dataset.n);
+        api.bad(`<b>${b.dataset.n} c'est ${w.t.full}.</b> ${c.t.full} écoute sur ${c.t.n}.`,{q:c.t.full,a:c.t.n});
       }
     });
   };paint();
@@ -1427,11 +1507,12 @@ MG.code={nom:"Saisie du code d'accès",sub:"Tape le port du service affiché, pu
 run(h,api){
   let n=0,typed="",cur=null;
   const keys=["1","2","3","4","5","6","7","8","9","del","0","ok"];
-  const take=()=>{cur=deal("code",PORTS,1)[0];typed=""};
+  let tgt=null;
+  const take=()=>{cur=deal("code",PORTS,1)[0];tgt=askPort(cur);typed=""};
   const paint=()=>{
     h.innerHTML=`<div class="tname">${MG.code.nom}</div><div class="tsub">${MG.code.sub}</div>
       <div class="prog">${n} sur 3</div>
-      <div class="subject">${cur.s}<div class="mono" style="font-size:23px;color:var(--l6);letter-spacing:5px;min-height:30px">${typed||"·····"}</div></div>
+      <div class="subject">${tgt.lbl}<div class="mono" style="font-size:23px;color:var(--l6);letter-spacing:5px;min-height:30px">${typed||"·····"}</div></div>
       <div class="pad">${keys.map(k=>k==="del"?`<button class="key del" data-k="del">⌫</button>`:k==="ok"?`<button class="key send" data-k="ok">OK</button>`:`<button class="key" data-k="${k}">${k}</button>`).join("")}</div>`;
     h.querySelector(".pad").onclick=e=>{const b=e.target.closest(".key");if(b)press(b.dataset.k)};
   };
@@ -1439,11 +1520,11 @@ run(h,api){
     if(k==="del")typed=typed.slice(0,-1);
     else if(k==="ok"){
       if(!typed)return;
-      if(cur.nums.includes(typed)){
-        n++;api.good(`<b>${cur.s} → ${cur.p}.</b> ${cur.c}`);
+      if(typed===tgt.n){
+        n++;api.good(`<b>${tgt.full} → ${tgt.n}.</b> ${portLine(cur)}. ${cur.c}`);
         if(n>=3){typed="";paint();return setTimeout(()=>api.end(),450)}
         take();
-      }else{api.bad(`<b>${cur.s} → ${cur.p}.</b> ${cur.c}`,{q:cur.s,a:cur.p});typed=""}
+      }else{api.bad(`<b>${tgt.full} → ${tgt.n}.</b> ${portLine(cur)}. ${cur.c}`,{q:tgt.full,a:tgt.n});typed=""}
     }else if(typed.length<5){typed+=k;sPop()}
     paint();
   };
@@ -1456,7 +1537,7 @@ run(h,api){
   const v=["dev","def","port"][(Math.random()*3)|0];
   const src=v==="port"?deal("filsp",PORTS,4):deal("fils",ACROS,4);
   const key=x=>v==="port"?x.s:x.s;
-  const val=x=>v==="dev"?x.d:v==="def"?x.def:x.p;
+  const val=x=>v==="dev"?x.d:v==="def"?x.def:portLine(x);
   const right=shuffle(src);
   const cols=["var(--l6)","var(--l3)","var(--l5)","var(--l1)"];
   h.innerHTML=`<div class="tname">${MG.fils.nom}</div>
@@ -1680,14 +1761,26 @@ run(h,api){
 }};
 
 /* 16 — Memory : sigle et signification */
-MG.memo={nom:"Appariement mémoire",sub:"Retourne les cartes deux par deux pour réunir chaque sigle et sa signification.",
+MG.memo={nom:"Appariement mémoire",sub:"Mémorise les cartes pendant qu'elles sont visibles, puis réunis chaque sigle et sa signification.",
 run(h,api){
   const lot=deal("memo",ACROS,4);
   const cards=shuffle(lot.flatMap((a,i)=>[{i,t:a.s,k:"s"},{i,t:a.d,k:"d"}]));
-  let up=[],found=0,lock=false;
+  let up=[],found=0,lock=true,left=6,ti=null;
   h.innerHTML=`<div class="tname">${MG.memo.nom}</div><div class="tsub">${MG.memo.sub}</div>
-    <div class="mem">${cards.map((c,j)=>`<button class="memc" data-j="${j}">◈</button>`).join("")}</div>`;
+    <div class="memhead"><span id="memMsg">Mémorise : <b id="memCd">6</b> s</span><button class="ghost" id="memGo">Cacher maintenant</button></div>
+    <div class="mem">${cards.map((c,j)=>`<button class="memc up" data-j="${j}">${c.t}</button>`).join("")}</div>`;
   const els=[...h.querySelectorAll(".memc")];
+  const hide=()=>{
+    clearInterval(ti);lock=false;
+    const hd=h.querySelector(".memhead");if(hd)hd.innerHTML=`<span>Retourne les cartes deux par deux.</span>`;
+    els.forEach((e,j)=>{if(!e.classList.contains("done")){e.classList.remove("up");e.textContent="◈"}});
+  };
+  ti=setInterval(()=>{
+    if(typeof PAUSED!=="undefined"&&PAUSED)return;
+    left--;const cd=h.querySelector("#memCd");if(cd)cd.textContent=left;
+    if(left<=0)hide();
+  },1000);
+  const go=h.querySelector("#memGo");if(go)go.onclick=hide;
   els.forEach((b,j)=>b.onclick=()=>{
     if(lock||b.classList.contains("up")||b.classList.contains("done"))return;
     b.classList.add("up");b.textContent=cards[j].t;up.push(j);sPop();
@@ -1698,11 +1791,11 @@ run(h,api){
       els[x].classList.add("done");els[y].classList.add("done");found++;
       api.good(`<b>${a.s} — ${a.d}.</b> ${a.def}`);
       up=[];lock=false;
-      if(found===4)setTimeout(()=>api.end(),450);
+      if(found===4){clearInterval(ti);setTimeout(()=>api.end(),450)}
     }else{
       const b2=lot[cards[y].i];
       api.bad(`<b>${a.s} = ${a.d}</b> · <b>${b2.s} = ${b2.d}</b>`,null);
-      setTimeout(()=>{[x,y].forEach(z=>{els[z].classList.remove("up");els[z].textContent="◈"});up=[];lock=false},1100);
+      setTimeout(()=>{[x,y].forEach(z=>{els[z].classList.remove("up");els[z].textContent="◈"});up=[];lock=false},1400);
     }
   });
 }};
@@ -1710,22 +1803,22 @@ run(h,api){
 /* 17 — Ports par ordre croissant */
 MG.ordre={nom:"Remise en ordre",sub:"Touche les services du plus petit numéro de port au plus grand.",
 run(h,api){
-  const lot=deal("ordre",PORTS,5);
-  const tri=lot.slice().sort((a,b)=>+a.nums[0]-+b.nums[0]);
+  const lot=deal("ordre",PORTS,5).map(p=>({p,t:askPort(p,p.nums[0])}));
+  const tri=lot.slice().sort((a,b)=>+a.t.n-+b.t.n);
   let step=0;
   h.innerHTML=`<div class="tname">${MG.ordre.nom}</div><div class="tsub">${MG.ordre.sub}</div>
-    <div class="qopts">${shuffle(lot).map(p=>`<button class="qopt" data-s="${p.s}">${p.s}</button>`).join("")}</div>`;
+    <div class="qopts">${shuffle(lot).map(x=>`<button class="qopt" data-s="${x.p.s}">${x.t.lbl}</button>`).join("")}</div>`;
   h.querySelectorAll(".qopt").forEach(b=>b.onclick=()=>{
     if(b.disabled)return;
     const att=tri[step];
-    if(b.dataset.s===att.s){
-      b.disabled=true;b.classList.add("good");b.textContent=`${step+1}. ${att.s} — ${att.p}`;step++;
-      api.good(`<b>${att.s} → ${att.p}.</b> ${att.c}`);
+    if(b.dataset.s===att.p.s){
+      b.disabled=true;b.classList.add("good");b.textContent=`${step+1}. ${att.t.full} — ${att.t.n}`;step++;
+      api.good(`<b>${att.t.full} → ${att.t.n}.</b> ${att.p.c}`);
       if(step===5)setTimeout(()=>api.end(),500);
     }else{
       b.classList.add("bad");setTimeout(()=>b.classList.remove("bad"),400);
-      const w=lot.find(p=>p.s===b.dataset.s);
-      api.bad(`<b>${w.s} c'est ${w.p}</b>, le prochain est plus petit : ${att.s} → ${att.p}.`,{q:"Ordre des ports",a:`${att.s} = ${att.p}`});
+      const w=lot.find(x=>x.p.s===b.dataset.s);
+      api.bad(`<b>${w.t.full} c'est ${w.t.n}</b>, le prochain est plus petit : ${att.t.full} → ${att.t.n}.`,{q:"Ordre des ports",a:`${att.t.full} = ${att.t.n}`});
     }
   });
 }};
@@ -1768,8 +1861,7 @@ const PLAYER_MG=["dl","stack","tri","power","code","fils","qcm","qcmInv","radio"
 const EFFETS=[
  {k:"atk",i:"⚔️",n:"Attaque",c:"var(--bad)",d:"Inflige des dégâts au boss."},
  {k:"heal",i:"✚",n:"Soin",c:"var(--ok)",d:"Restaure tes PV."},
- {k:"shield",i:"🛡️",n:"Bouclier",c:"var(--l3)",d:"Absorbe la prochaine attaque."},
- {k:"risk",i:"⚡",n:"Frappe risquée",c:"var(--gold)",d:"Dégâts doublés, mais annulés à la moindre faute."}
+ {k:"shield",i:"🛡️",n:"Bouclier",c:"var(--l3)",d:"Absorbe la prochaine attaque."}
 ];
 const DIFF={
  facile:{n:"Facile",i:"🌤️",s:"PV confortables, chrono large, une erreur pardonnée par épreuve.",
@@ -1856,11 +1948,6 @@ function playCardDuel(c){
     }else if(c.e.k==="shield"){
       const v=Math.round(22*p*DF.bouclier);D.shield+=v;S.score+=v;
       pop("#mePanel","🛡 "+v,"var(--l3)");fiche($("#duToast"),`<b>Bouclier ${v}.</b> Il absorbe la prochaine attaque.`);
-    }else{
-      if(perfect){
-        const dmg=Math.round(52*m*DF.dmg);D.hp-=dmg;S.score+=dmg*3;
-        pop("#foePanel","−"+dmg,"var(--gold)");fiche($("#duToast"),`<b>Frappe risquée réussie : ${dmg} dégâts.</b>`);
-      }else{pop("#foePanel","raté","var(--muted)");fiche($("#duToast"),`<b>Frappe risquée manquée.</b> ${f} faute${f>1?"s":""} : aucun dégât.`)}
     }
     paintDuel();
     setTimeout(()=>{if(D.hp<=0)return winBoss();bossTurn()},1200);
@@ -1883,6 +1970,7 @@ function bossTurn(){
     },()=>{left=Math.max(600,left-3000);$("#duTimer").style.width=(left/total*100)+"%"},DF.grace);
     clearInterval(duTi);
     duTi=setInterval(()=>{
+      if(PAUSED)return;
       left-=100;$("#duTimer").style.width=Math.max(0,left/total*100)+"%";
       if(left<=0){clearInterval(duTi);api.dead=true;$("#duTimerWrap").style.display="none";
         finishBoss(Math.round(a.d*1.4*DF.riposte),"Attaque non contenue.")}
@@ -1933,9 +2021,10 @@ function paintMara(){
 }
 function stepMara(ts){
   if(!S||S.kind!=="mara")return;
+  if(PAUSED){MA.last=ts;raf=requestAnimationFrame(stepMara);return}
   if(!MA.last)MA.last=ts;
   const dt=Math.min(90,ts-MA.last);MA.last=ts;
-  MA.speed=Math.max(0,MA.speed-(.30+.22*(MA.pal-1))*dt/1000);
+  MA.speed=Math.max(0,MA.speed-(.16+.10*(MA.pal-1))*dt/1000);
   MA.dist+=MA.speed*dt/1000;
   const pal=Math.min(4,1+Math.floor(MA.dist/(MA.goal/4)));
   if(pal!==MA.pal){
@@ -1955,11 +2044,11 @@ function nextMara(){
   duKey=null;
   const id=shuffle(PLAYER_MG)[0];
   MG[id].run($("#maraBox"),mkApi(
-    (f,t)=>{if(f===0){MA.speed+=1.5;MA.dist+=25;S.score+=60;fiche($("#maraToast"),"<b>Épreuve parfaite : relance de vitesse.</b>")}
+    (f,t)=>{if(f===0){MA.speed+=2.6;MA.dist+=35;S.score+=60;fiche($("#maraToast"),"<b>Épreuve parfaite : relance de vitesse.</b>")}
       setTimeout(nextMara,500)},
     null,
     0,
-    ()=>{MA.speed=Math.min(16,MA.speed+.85);S.score+=12}
+    ()=>{MA.speed=Math.min(18,MA.speed+1.5);S.score+=12}
   ));
 }
 function winMara(){
@@ -2009,6 +2098,7 @@ function armBomb(d){
   paintBomb();bombGrid();
   clearInterval(bbTi);
   bbTi=setInterval(()=>{
+    if(PAUSED)return;
     BB.left-=100;$("#bTimer").style.width=Math.max(0,BB.left/BB.total*100)+"%";
     const s=Math.max(0,BB.left/1000);
     $("#bClock").textContent=Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
@@ -2134,6 +2224,7 @@ function armDuo(d){
   paintDuo();duoGrid();
   clearInterval(duoTi);
   duoTi=setInterval(()=>{
+    if(PAUSED)return;
     DU.left-=100;
     $("#dTimer").style.width=Math.max(0,DU.left/DU.total*100)+"%";
     const s=Math.max(0,DU.left/1000);
@@ -2239,8 +2330,9 @@ function modFils(m){
 /* --- module Clavier chiffré --- */
 function modCode(m){
   if(!m.st){
-    const p=shuffle(PORTS)[0];
-    m.st={p,seq:[],indice:p.al&&Math.random()<.5?p.al.split(",")[0].trim():(Math.random()<.4?p.c:p.s)};
+    const p=shuffle(PORTS)[0],t=askPort(p);
+    const base=p.al&&Math.random()<.5?p.al.split(",")[0].trim():(Math.random()<.4?p.c:p.s);
+    m.st={p,t,seq:[],indice:base+(t.q?` <em class="qual">${t.q}</em>`:"")};
   }
   const st=m.st,p=st.p;
   const paint=()=>{
@@ -2253,8 +2345,8 @@ function modCode(m){
     $("#cDel").onclick=()=>{st.seq.pop();paint()};
     $("#cOk").onclick=()=>{
       if(!st.seq.length)return;
-      if(p.nums.includes(st.seq.join(""))){S.hits++;duoSolved(m,`<b>${p.s} → ${p.p}.</b> ${p.c}`)}
-      else{strikeDuo(`<b>${p.s} → ${p.p}.</b> ${p.c}`);S.errors.push({q:p.s,a:p.p});st.seq=[];paint()}
+      if(st.seq.join("")===st.t.n){S.hits++;duoSolved(m,`<b>${st.t.full} → ${st.t.n}.</b> ${portLine(p)}. ${p.c}`)}
+      else{strikeDuo(`<b>${st.t.full} → ${st.t.n}.</b> ${portLine(p)}. ${p.c}`);S.errors.push({q:st.t.full,a:st.t.n});st.seq=[];paint()}
     };
   };paint();
 }
@@ -2441,7 +2533,7 @@ $("#qFiches").onclick=()=>show("hub");
 /* =======================================================
    FICHES
    ======================================================= */
-function paintFiches(f){
+function ficheHTML(f){
   const q=(f||"").toLowerCase(),hit=t=>String(t).toLowerCase().includes(q);
   let h="";
   ["reseau","systemes","virtu","gouv"].forEach(k=>{
@@ -2452,13 +2544,159 @@ function paintFiches(f){
   });
   const pr=PORTS.filter(p=>!q||hit(p.s)||hit(p.p)||hit(p.c)||hit(p.al||""));
   if(pr.length)h+=`<div class="grp">Ports et protocoles</div>`+pr.map(p=>
-    `<div class="fiche" style="--c:var(--l6)"><div class="h"><b>${p.s}</b><span class="mono">${p.p}</span>${p.al?`<span>alias : ${p.al}</span>`:""}</div><p>${p.c}</p></div>`).join("");
+    `<div class="fiche" style="--c:var(--l6)"><div class="h"><b>${p.s}</b><span class="mono">${p.p}</span>${p.al?`<span>alias : ${p.al}</span>`:""}</div><p>${multi(p)?portLine(p)+". ":""}${p.c}</p></div>`).join("");
   const ol=OSI.filter(l=>!q||hit(l.nom)||hit(l.role)||hit(l.n));
   if(ol.length)h+=`<div class="grp">Modèle OSI</div>`+ol.slice().reverse().map(l=>
     `<div class="fiche" style="--c:var(--l${l.n})"><div class="h"><b>${l.n} — ${l.nom}</b><span>${OSI_ITEMS.filter(i=>i.n===l.n).slice(0,3).map(i=>i.l).join(", ")}</span></div><p>${l.role}</p></div>`).join("");
-  $("#ficheList").innerHTML=h||`<p class="lead">Aucune fiche. Essaie un sigle, un numéro de port ou un nom de couche.</p>`;
+  return h||`<p class="lead">Aucune fiche. Essaie un sigle, un numéro de port ou un nom de couche.</p>`;
 }
+
+/* =======================================================
+   OVERLAYS : règles, fiche de notes, nouveautés
+   ======================================================= */
+let ovOpen=false;
+function openOv(title,html,after){
+  $("#ovTitle").textContent=title;$("#ovBody").innerHTML=html;
+  $("#ov").hidden=false;ovOpen=true;pauseAll();
+  $("#ovBody").scrollTop=0;
+  if(after)after();
+}
+function closeOv(){if(!ovOpen)return;$("#ov").hidden=true;ovOpen=false;resumeAll()}
+$("#ovClose").onclick=closeOv;
+$("#ov").onclick=e=>{if(e.target.id==="ov")closeOv()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&ovOpen)closeOv()});
+
+/* --- fiche de notes --- */
+function openCheat(){
+  openOv("Fiche de notes",
+    `<div class="note">La réponse est là-dedans. Le chrono est en pause tant que cette fiche est ouverte.</div>
+     <input class="search" id="cSearch" placeholder="Filtrer : ldap, 3389, PRA, couche 4, SIEM…" autocomplete="off">
+     <div id="cList"></div>`,
+    ()=>{
+      const inp=$("#cSearch");
+      $("#cList").innerHTML=ficheHTML("");
+      inp.oninput=e=>{$("#cList").innerHTML=ficheHTML(e.target.value)};
+    });
+}
+
+/* --- règles par mode --- */
+const RULES={
+ mara:{t:"🏃 Marathon",h:`
+  <h3>Le principe</h3><p>Une course de 1 200 m. Le coureur avance tout seul, mais sa foulée ralentit sans arrêt. Seules les bonnes réponses la relancent.</p>
+  <h3>Allure</h3><div class="kv">
+   <b>+1,5 m/s</b><span>par bonne réponse</span>
+   <b>+2,6 m/s</b><span>et 35 m offerts si une épreuve est bouclée sans aucune faute</span>
+   <b>0</b><span>une erreur ne ralentit pas : elle ne coûte que le temps passé dessus</span></div>
+  <h3>Paliers</h3><p>Un palier tous les 300 m, quatre en tout. À chaque palier la fatigue s'accentue, donc l'allure retombe plus vite.</p>
+  <h3>Fin</h3><p>Allure à zéro, la course s'arrête. Ligne franchie, tu repars pour une étape de 200 m de plus.</p>`},
+ bomb:{t:"💣 Désamorçage",h:`
+  <h3>Solo</h3><p>Choisis ton calibre : 3, 5 ou 7 modules. Chaque module est une épreuve. Tu attaques ceux que tu veux, dans l'ordre que tu veux, et tu peux changer en cours de route — mais en solo un module quitté repart de zéro.</p>
+  <h3>Sanctions</h3><div class="kv"><b>3 erreurs</b><span>elle saute</span><b>−12 s</b><span>par erreur, en plus de la LED allumée</span><b>Chrono à 0</b><span>elle saute aussi</span></div>
+  <h3>À deux</h3><p>L'un tient la bombe, l'autre ouvre le <b>Manuel du décodeur</b> sur un second téléphone et saisit le numéro de série affiché. Les tables du manuel sont différentes pour chaque numéro de série.</p>
+  <p>Cinq modules : Fils, Clavier chiffré, Flèches, Colorize, et le module Couche qui se déclenche tout seul. Ici les modules gardent leur état : tu peux passer de l'un à l'autre sans rien perdre.</p>
+  <div class="note">Le désamorceur ne voit aucune consigne à l'écran : toutes les explications sortent de la bouche du décodeur.</div>`},
+ duel:{t:"⚔️ Duel du Saboteur",h:`
+  <h3>Le principe</h3><p>Combat au tour par tour. À ton tour tu reçois trois cartes : une épreuve associée à un effet. Le boss riposte ensuite avec une attaque chronométrée.</p>
+  <h3>Les effets</h3><div class="kv"><b>⚔️</b><span>inflige des dégâts</span><b>✚</b><span>restaure tes PV</span><b>🛡️</b><span>absorbe la prochaine attaque</span></div>
+  <h3>Puissance</h3><p>Plus tu réponds juste, plus l'effet est fort. Une épreuve sans aucune faute devient un coup critique, +30 %.</p>
+  <h3>Usure</h3><p>Chaque carte jouée perd <b>0,30</b> de multiplicateur et en regagne <b>0,10</b> à chaque tour où tu ne t'en sers pas. Plancher 0,10, plafond 1,00. Il faut donc tourner entre les épreuves.</p>
+  <h3>Riposte</h3><p>Fini avec plus de la moitié du chrono restant : aucun dégât. Chaque erreur pendant la riposte coupe 3 s. Chrono épuisé, tu prends tout.</p>
+  <h3>Difficulté</h3><p>Trois niveaux, qui changent les PV des deux camps, les dégâts, les soins, le chrono et le seuil d'esquive. En Facile, une erreur par épreuve est pardonnée.</p>`},
+ red:{t:"🔴 Alerte rouge",h:`
+  <h3>Le principe</h3><p>Un sabotage est en cours. Quatre épreuves tirées au hasard parmi neuf, à enchaîner avant la fin du compte à rebours.</p>
+  <h3>Chrono</h3><div class="kv"><b>−3 s</b><span>par erreur</span><b>+45 s</b><span>quand les quatre épreuves sont bouclées</span></div>
+  <h3>Montée</h3><p>Chaque sabotage contenu déclenche le suivant, avec un compte à rebours plus court.</p>`},
+ fw:{t:"🧱 Pare-feu",h:`
+  <h3>Le principe</h3><p>Des paquets descendent vers le réseau interne, étiquetés par service. Tape le numéro de port sur le pavé, puis OK, avant qu'ils touchent le sol.</p>
+  <h3>Lecture de l'étiquette</h3><p>Le nom affiché est parfois l'<b>alias</b> du service et non son nom. Si le service a plusieurs ports, une mention précise lequel est attendu : <em>côté serveur</em>, <em>données</em>, <em>session service</em>…</p>
+  <h3>Sanctions</h3><div class="kv"><b>Mauvais port</b><span>la saisie est effacée et un indice s'affiche</span><b>Paquet au sol</b><span>une vie sur trois</span></div>
+  <h3>Vagues</h3><p>Toutes les six bonnes réponses, la vague monte : chute plus rapide, paquets plus rapprochés, et jusqu'à trois paquets simultanés en fin de partie.</p>
+  <p>Au clavier : les chiffres, ⌫ et Entrée.</p>`},
+ soc:{t:"🚨 Cellule de crise",h:`
+  <h3>Le principe</h3><p>Une menace attaque le SI et possède une barre de vie. À chaque symptôme, joue la carte outil qui y répond parmi cinq.</p>
+  <h3>Chrono</h3><p>Un temps limité par symptôme, qui se raccourcit à chaque menace abattue. Laisser filer le temps compte comme une erreur.</p>
+  <h3>Vies</h3><p>Trois. Une mauvaise carte en coûte une.</p>
+  <p>Au clavier : les touches 1 à 5.</p>`},
+ duo:{t:"👥 Désamorçage à deux",h:`
+  <h3>Rôles</h3><p>Le <b>désamorceur</b> garde cet écran et ne voit aucune consigne. Le <b>décodeur</b> ouvre le Manuel sur un autre téléphone, saisit le numéro de série, et donne toutes les instructions à voix haute.</p>
+  <h3>Règle d'or</h3><p>Personne ne montre son écran. Le décodeur ne donne jamais la réponse : il dit quel thème, quelle couleur ou quel symbole, c'est au désamorceur de savoir de quel sigle ou de quel port il s'agit.</p>
+  <h3>Navigation</h3><p>La grille reste affichée : tu passes d'un module à l'autre quand tu veux, chacun garde son état.</p>
+  <h3>Module Couche</h3><p>Il se déclenche seul et n'a aucune table. Douze secondes pour cliquer la bonne couche, sinon c'est une erreur.</p>`},
+ zen:{t:"🧘 Mode zen",h:`
+  <h3>Le principe</h3><p>Aucun chrono, aucun point de vie, aucune sanction. Les épreuves s'enchaînent et la fiche complète s'affiche à chaque réponse, juste ou fausse.</p>
+  <p><b>Autre épreuve</b> passe à la suivante si celle en cours ne te sert à rien. <b>Terminer</b> clôt la session et récupère les XP.</p>
+  <div class="note">Le mode à utiliser la veille du contrôle, quand le stress n'aide pas.</div>`}
+};
+function openRules(k){const r=RULES[k];if(r)openOv(r.t,r.h)}
+
+/* --- patch notes --- */
+const PATCH_V="2026-09-26";
+const PATCH=`
+ <span class="pv">Mise à jour du 26 septembre 2026</span>
+ <h3>Nouveau : version révision</h3>
+ <ul><li>Un interrupteur <b>Version révision</b> dans la salle serveur. Une fois activé, un bouton <b>📋</b> apparaît pendant les parties et ouvre la fiche de notes où se trouve la réponse.</li>
+ <li>Le chrono et les compteurs se mettent en pause tant que la fiche est ouverte.</li>
+ <li>Les records ne sont pas enregistrés dans cette version : c'est fait pour apprendre, pas pour scorer.</li></ul>
+ <h3>Nouveau : règles et nouveautés</h3>
+ <ul><li>Un bouton <b>?</b> sur chaque mode, dans la salle serveur comme en cours de partie, donne les règles complètes.</li>
+ <li>Le bouton <b>🎁</b> en haut à droite rouvre cette page à tout moment.</li></ul>
+ <h3>Ports : on précise lequel</h3>
+ <ul><li>Six services ont plusieurs ports. Partout où un port est demandé, le jeu indique maintenant lequel : <em>côté serveur</em> ou <em>côté client</em> pour bootps/bootpc, <em>données</em> ou <em>contrôle</em> pour ftp et ftps, <em>name</em>, <em>datagram</em> ou <em>session service</em> pour netbios, <em>demande d'accès</em> ou <em>connexion serveur</em> pour radius, <em>SMTPS implicite</em> ou <em>soumission</em> pour SMTP sécurisé.</li>
+ <li>Concerné : Pare-feu, Saisie du code, Dérivation de l'alimentation, Remise en ordre, Alerte rouge et le Clavier chiffré de la bombe à deux.</li></ul>
+ <h3>Plus facile</h3>
+ <ul><li><b>Marathon</b> : la foulée retombe presque deux fois moins vite, ce qui laisse le temps de réfléchir. Les gains montent à +1,5 m/s par bonne réponse et +2,6 m/s pour une épreuve parfaite.</li>
+ <li><b>Appariement mémoire</b> : les cartes sont désormais montrées six secondes avant d'être retournées, avec un bouton pour couper court. Le temps d'observation après une paire ratée passe à 1,4 s.</li>
+ <li><b>Pare-feu</b> : chute plus lente, paquets plus espacés, et trois paquets simultanés au maximum au lieu de cinq.</li>
+ <li><b>Duel du Saboteur</b> : la Frappe risquée est retirée. Restent attaque, soin et bouclier.</li></ul>
+ <h3>Retiré</h3>
+ <ul><li>Le mini-jeu d'arcade <b>La pile</b> ne figure plus dans la salle serveur. L'épreuve <b>Assemblage de la pile</b>, elle, reste dans tous les modes.</li></ul>
+ <div class="note">La progression, les XP et les records restent stockés dans ce navigateur. Effacer les données du site les efface aussi.</div>`;
+function openPatch(){
+  openOv("Nouveautés",PATCH);
+  DB.patch=PATCH_V;save();
+  const d=$("#newsBtn").querySelector(".dot9");if(d)d.remove();
+}
+$("#newsBtn").onclick=openPatch;
+
+/* --- injection des boutons dans les écrans de jeu --- */
+const MODESCR={"s-fw":"fw","s-soc":"soc","s-duel":"duel","s-red":"red","s-mara":"mara","s-bomb":"bomb","s-duo":"duo","s-zen":"zen"};
+Object.keys(MODESCR).forEach(id=>{
+  const hud=document.querySelector("#"+id+" .hud");if(!hud)return;
+  const k=MODESCR[id];
+  const c=document.createElement("button");
+  c.className="ghost cheatBtn";c.textContent="📋";c.title="Fiche de notes";
+  c.style.marginLeft="auto";c.onclick=openCheat;
+  const q=document.createElement("button");
+  q.className="ghost";q.textContent="?";q.title="Règles";q.onclick=()=>openRules(k);
+  hud.appendChild(c);hud.appendChild(q);
+});
+function paintRev(){
+  const on=!!DB.rev;
+  $("#revSw").classList.toggle("on",on);
+  document.querySelectorAll(".cheatBtn").forEach(b=>b.style.display=on?"":"none");
+}
+$("#revSw").onclick=()=>{DB.rev=!DB.rev;save();paintRev()};
+
+/* --- boutons ? sur les cartes de la salle serveur --- */
+document.querySelectorAll(".game").forEach(card=>{
+  const k=card.dataset.g;if(!RULES[k])return;
+  const q=document.createElement("span");
+  q.className="qbtn";q.textContent="?";q.setAttribute("role","button");q.title="Règles";
+  q.onclick=e=>{e.stopPropagation();openRules(k)};
+  card.appendChild(q);
+});
+
+function paintFiches(f){$("#ficheList").innerHTML=ficheHTML(f)}
 $("#search").oninput=e=>paintFiches(e.target.value);
+
+/* =======================================================
+   DÉMARRAGE
+   ======================================================= */
+paintRev();
+if(DB.patch!==PATCH_V){
+  const d=document.createElement("span");d.className="dot9";$("#newsBtn").appendChild(d);
+  setTimeout(openPatch,450);
+}
 </script>
 </body>
 </html>

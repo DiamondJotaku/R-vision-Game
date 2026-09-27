@@ -49,7 +49,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   border-radius:4px 14px 14px 4px;padding:15px 16px;transition:transform .12s,background .12s}
 .game:hover{transform:translateX(4px);background:var(--card2)}
 .game .ico{font-size:30px;text-align:center;line-height:1}
-.game b{display:block;font-size:17px;font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.game b{display:block;font-size:17px;padding-right:30px;font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
 .game span{display:block;font-size:13.5px;color:var(--muted);line-height:1.35;margin-top:2px}
 .game .best{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--c);margin-top:5px}
 .row{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
@@ -299,11 +299,16 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
   padding:0;backdrop-filter:blur(3px)}
 .ov[hidden]{display:none}
 .ovbox{background:var(--paper);border:1px solid var(--line);border-radius:16px 16px 0 0;width:100%;max-width:660px;
-  max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
-@media(min-width:680px){.ov{align-items:center}.ovbox{border-radius:16px;max-height:84vh}}
-.ovtop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+  max-height:86vh;display:block;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
+@supports(max-height:1dvh){.ovbox{max-height:86dvh}}
+@media(min-width:680px){.ov{align-items:center}.ovbox{border-radius:16px;max-height:84vh}
+  @supports(max-height:1dvh){.ovbox{max-height:84dvh}}}
+.ovtop{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 16px 11px;border-bottom:1px solid var(--line);background:var(--paper)}
 .ovtop b{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;letter-spacing:-.01em}
-.ovbody{overflow-y:auto;padding:14px 16px 24px;-webkit-overflow-scrolling:touch}
+.ovtop .iconbtn{flex:none}
+.ovbody{padding:14px 16px calc(30px + env(safe-area-inset-bottom,0px))}
 .ovbody p{margin:0 0 10px;font-size:14.5px;line-height:1.5}
 .ovbody h3{font-family:"Bricolage Grotesque",sans-serif;font-size:15px;margin:16px 0 6px}
 .ovbody h3:first-child{margin-top:0}
@@ -314,8 +319,20 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 .note{background:var(--card);border-left:3px solid var(--l3);border-radius:0 9px 9px 0;padding:9px 12px;font-size:13.5px;color:var(--muted);margin-bottom:12px}
 .pv{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;background:var(--card2);border:1px solid var(--line);
   border-radius:99px;padding:2px 9px;margin-bottom:10px;color:var(--muted)}
-.qbtn{position:absolute;top:8px;right:9px;width:25px;height:25px;border-radius:99px;border:1px solid var(--line);
-  background:var(--card2);color:var(--muted);font-size:13px;font-weight:700;display:grid;place-items:center;z-index:2}
+.tabs{position:sticky;top:53px;z-index:2;background:var(--paper);display:flex;gap:6px;overflow-x:auto;
+  padding:11px 0;margin:-14px 0 13px;border-bottom:1px solid var(--line);
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;text-align:left;line-height:1.15}
+.tab b{display:block;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:700}
+.tab small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap}
+.tab.on{border-color:var(--l6);background:var(--card2)}
+.tab.on b{color:var(--l6)}
+.game span.qbtn,.qbtn{position:absolute;top:6px;right:6px;width:34px;height:34px;box-sizing:border-box;
+  border-radius:99px;border:1px solid var(--line);background:var(--card2);color:var(--muted);
+  font-size:15px;font-weight:700;line-height:1;margin:0;padding:0;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  z-index:2;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .qbtn:hover{color:var(--ink);border-color:var(--c)}
 .game{position:relative}
 .revsw{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;
@@ -327,6 +344,8 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 .revsw .t2{flex:1;min-width:0}
 .revsw b{display:block;font-size:14.5px}
 .revsw small{display:block;color:var(--muted);font-size:12.5px;line-height:1.3}
+.verline{margin:18px 0 0;text-align:center;font-size:12px;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.verline b{color:var(--l6)}
 .dot9{position:absolute;top:-2px;right:-2px;width:9px;height:9px;border-radius:99px;background:var(--bad);border:2px solid var(--paper)}
 
 /* manuel */
@@ -348,10 +367,16 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 }
 
 /* bombe à deux */
-.alarm-osi{background:color-mix(in srgb,var(--bad) 15%,var(--card));border:1px solid var(--bad);border-radius:12px;padding:11px 13px;margin-bottom:10px;animation:pulse 1.2s infinite}
-.alarm-osi .ahead{display:flex;justify-content:space-between;align-items:center;font-size:13px;gap:10px}
-.alarm-osi .ahead span{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:700;color:var(--bad)}
-.alarm-osi .atxt{font-size:14.5px;margin:8px 0 10px;line-height:1.35}
+.alarm-osi{background:color-mix(in srgb,var(--bad) 22%,var(--card));border:2px solid var(--bad);border-radius:12px;
+  padding:12px 14px;margin-bottom:10px;opacity:1;animation:alarmGlow 1.1s ease-in-out infinite}
+@keyframes alarmGlow{
+  0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--bad) 55%,transparent);background:color-mix(in srgb,var(--bad) 18%,var(--card))}
+  50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--bad) 22%,transparent);background:color-mix(in srgb,var(--bad) 32%,var(--card))}}
+@media(prefers-reduced-motion:reduce){.alarm-osi{animation:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--bad) 25%,transparent)}}
+.alarm-osi .ahead{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;gap:10px;color:var(--ink)}
+.alarm-osi .ahead b{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.alarm-osi .ahead span{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:700;color:var(--ink)}
+.alarm-osi .atxt{font-size:15px;margin:9px 0 11px;line-height:1.4;color:var(--ink);font-weight:500}
 .lnums{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
 .lnum{background:var(--card2);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:8px;padding:10px 0;
   font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:700}
@@ -475,6 +500,7 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
     <button class="ghost" id="openFiches">Fiches de révision</button>
     <button class="ghost" id="resetBtn">Effacer la progression</button>
   </div>
+  <p class="verline">Nuit Blanche <b id="verTag">v—</b> · touche 🎁 pour les patch notes</p>
 </section>
 
 <!-- ================= PARE-FEU ================= -->
@@ -2558,10 +2584,11 @@ let ovOpen=false;
 function openOv(title,html,after){
   $("#ovTitle").textContent=title;$("#ovBody").innerHTML=html;
   $("#ov").hidden=false;ovOpen=true;pauseAll();
-  $("#ovBody").scrollTop=0;
+  document.body.style.overflow="hidden";
+  $(".ovbox").scrollTop=0;
   if(after)after();
 }
-function closeOv(){if(!ovOpen)return;$("#ov").hidden=true;ovOpen=false;resumeAll()}
+function closeOv(){if(!ovOpen)return;$("#ov").hidden=true;ovOpen=false;document.body.style.overflow="";resumeAll()}
 $("#ovClose").onclick=closeOv;
 $("#ov").onclick=e=>{if(e.target.id==="ov")closeOv()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&ovOpen)closeOv()});
@@ -2630,33 +2657,122 @@ const RULES={
 function openRules(k){const r=RULES[k];if(r)openOv(r.t,r.h)}
 
 /* --- patch notes --- */
-const PATCH_V="2026-09-26";
-const PATCH=`
- <span class="pv">Mise à jour du 26 septembre 2026</span>
- <h3>Nouveau : version révision</h3>
+const PATCHES=[
+{v:"1.4",d:"27 septembre 2026",t:"Correctifs d'affichage",h:`
+ <h3>Correctif</h3>
+ <ul><li>Le <b>?</b> des cartes s'affichait collé en haut à gauche de son rond : une règle de style plus spécifique écrasait son centrage. Il est maintenant parfaitement centré.</li>
+ <li>Les fenêtres <b>règles</b> et <b>patch notes</b> défilent pour de bon : la boîte entière est devenue la zone de défilement, avec le titre et les onglets qui restent collés en haut. L'ancien montage dépendait d'un comportement de mise en page que certains navigateurs mobiles n'appliquent pas.</li>
+ <li>Le numéro de version est affiché en bas de la salle serveur : pratique pour vérifier que la mise à jour est bien arrivée et que le navigateur ne sert pas une ancienne copie en cache.</li></ul>`},
+
+{v:"1.3",d:"27 septembre 2026",t:"Correctif des fenêtres",h:`
+ <h3>Correctif</h3>
+ <ul><li>Les fenêtres <b>règles</b> et <b>patch notes</b> ne défilaient pas : tout ce qui dépassait la hauteur de l'écran était coupé et inaccessible. Elles défilent maintenant normalement, jusqu'en bas.</li>
+ <li>Hauteur recalculée pour les mobiles, barre d'adresse comprise, et la page derrière ne bouge plus quand on fait défiler la fenêtre.</li>
+ <li>Les boutons <b>?</b> des cartes passent de 25 à 34 px : nettement plus faciles à viser au doigt.</li></ul>`},
+
+{v:"1.2",d:"27 septembre 2026",t:"Correctif du module Couche",h:`
+ <h3>Correctif</h3>
+ <ul><li>Le <b>module Couche</b> de la bombe à deux était presque illisible : son clignotement faisait varier l'opacité de tout le bandeau, texte compris. Le bandeau reste maintenant pleinement visible et c'est son contour rouge qui pulse.</li>
+ <li>Bordure épaissie, fond plus dense, rôle OSI en blanc, décompte agrandi.</li>
+ <li>L'animation se coupe si « Réduire les animations » est activé sur l'appareil.</li></ul>
+ <h3>Patch notes</h3>
+ <ul><li>Cette fenêtre liste désormais toutes les versions, de la plus récente à la plus ancienne, chacune dans son onglet.</li>
+ <li>À l'ouverture du site, seule la dernière s'affiche.</li></ul>`},
+
+{v:"1.1",d:"26 septembre 2026",t:"Version révision, règles, ports précis",h:`
+ <h3>Version révision</h3>
  <ul><li>Un interrupteur <b>Version révision</b> dans la salle serveur. Une fois activé, un bouton <b>📋</b> apparaît pendant les parties et ouvre la fiche de notes où se trouve la réponse.</li>
  <li>Le chrono et les compteurs se mettent en pause tant que la fiche est ouverte.</li>
- <li>Les records ne sont pas enregistrés dans cette version : c'est fait pour apprendre, pas pour scorer.</li></ul>
- <h3>Nouveau : règles et nouveautés</h3>
+ <li>Les records ne sont pas enregistrés dans cette version.</li></ul>
+ <h3>Règles et nouveautés</h3>
  <ul><li>Un bouton <b>?</b> sur chaque mode, dans la salle serveur comme en cours de partie, donne les règles complètes.</li>
- <li>Le bouton <b>🎁</b> en haut à droite rouvre cette page à tout moment.</li></ul>
+ <li>Le bouton <b>🎁</b> en haut à droite ouvre les patch notes.</li></ul>
  <h3>Ports : on précise lequel</h3>
- <ul><li>Six services ont plusieurs ports. Partout où un port est demandé, le jeu indique maintenant lequel : <em>côté serveur</em> ou <em>côté client</em> pour bootps/bootpc, <em>données</em> ou <em>contrôle</em> pour ftp et ftps, <em>name</em>, <em>datagram</em> ou <em>session service</em> pour netbios, <em>demande d'accès</em> ou <em>connexion serveur</em> pour radius, <em>SMTPS implicite</em> ou <em>soumission</em> pour SMTP sécurisé.</li>
+ <ul><li>Six services ont plusieurs ports. Partout où un port est demandé, le jeu indique lequel : <em>côté serveur</em> ou <em>côté client</em> pour bootps/bootpc, <em>données</em> ou <em>contrôle</em> pour ftp et ftps, <em>name</em>, <em>datagram</em> ou <em>session service</em> pour netbios, <em>demande d'accès</em> ou <em>connexion serveur</em> pour radius, <em>SMTPS implicite</em> ou <em>soumission</em> pour SMTP sécurisé.</li>
  <li>Concerné : Pare-feu, Saisie du code, Dérivation de l'alimentation, Remise en ordre, Alerte rouge et le Clavier chiffré de la bombe à deux.</li></ul>
  <h3>Plus facile</h3>
- <ul><li><b>Marathon</b> : la foulée retombe presque deux fois moins vite, ce qui laisse le temps de réfléchir. Les gains montent à +1,5 m/s par bonne réponse et +2,6 m/s pour une épreuve parfaite.</li>
- <li><b>Appariement mémoire</b> : les cartes sont désormais montrées six secondes avant d'être retournées, avec un bouton pour couper court. Le temps d'observation après une paire ratée passe à 1,4 s.</li>
- <li><b>Pare-feu</b> : chute plus lente, paquets plus espacés, et trois paquets simultanés au maximum au lieu de cinq.</li>
+ <ul><li><b>Marathon</b> : la foulée retombe presque deux fois moins vite. Gains portés à +1,5 m/s par bonne réponse et +2,6 m/s pour une épreuve parfaite.</li>
+ <li><b>Appariement mémoire</b> : les cartes sont montrées six secondes avant d'être retournées, avec un bouton pour couper court.</li>
+ <li><b>Pare-feu</b> : chute plus lente, paquets plus espacés, trois paquets simultanés au maximum au lieu de cinq.</li>
  <li><b>Duel du Saboteur</b> : la Frappe risquée est retirée. Restent attaque, soin et bouclier.</li></ul>
  <h3>Retiré</h3>
- <ul><li>Le mini-jeu d'arcade <b>La pile</b> ne figure plus dans la salle serveur. L'épreuve <b>Assemblage de la pile</b>, elle, reste dans tous les modes.</li></ul>
- <div class="note">La progression, les XP et les records restent stockés dans ce navigateur. Effacer les données du site les efface aussi.</div>`;
-function openPatch(){
-  openOv("Nouveautés",PATCH);
+ <ul><li>Le mini-jeu d'arcade <b>La pile</b> quitte la salle serveur. L'épreuve <b>Assemblage de la pile</b> reste dans tous les modes.</li></ul>`},
+
+{v:"1.0",d:"26 septembre 2026",t:"Désamorçage à deux et manuel du décodeur",h:`
+ <h3>Bombe à deux joueurs</h3>
+ <ul><li>Un <b>désamorceur</b> tient la bombe, un <b>décodeur</b> ouvre le manuel sur un second téléphone. Les deux écrans se synchronisent par un <b>numéro de série à quatre chiffres</b> : chaque série engendre ses propres tables.</li>
+ <li>Cinq modules : <b>Fils</b> (couper le sigle du bon thème), <b>Clavier chiffré</b> (un port saisi en symboles), <b>Flèches</b> (trois thèmes à valider, ordre changeant), <b>Colorize</b> (définition → sigle → couleur), <b>Couche</b> (alarme automatique, rôle OSI, douze secondes).</li>
+ <li>La grille reste affichée : on passe d'un module à l'autre à volonté, chacun garde son état.</li>
+ <li>Le désamorceur ne voit aucune consigne : toutes les explications passent par le décodeur.</li></ul>
+ <h3>Manuel du décodeur</h3>
+ <ul><li>Accessible depuis la salle serveur. Rôle du décodeur, tables des fils, des symboles, des flèches et des couleurs, et bouton d'impression pour une version papier.</li>
+ <li>Un champ <b>série imposée</b> permet de rejouer avec un manuel déjà imprimé.</li></ul>
+ <h3>Ailleurs</h3>
+ <ul><li>Les alias et les commentaires de la table des ports entrent dans le Pare-feu et l'Alerte rouge. Les alias deviennent filtrables dans les fiches.</li>
+ <li>Le Pare-feu ralentit et plafonne le nombre de paquets simultanés.</li></ul>`},
+
+{v:"0.9",d:"26 septembre 2026",t:"Marathon, Désamorçage solo, Mode zen",h:`
+ <h3>Marathon</h3>
+ <ul><li>Course de 1 200 m avec un coureur qui avance en temps réel. La foulée ralentit seule, les bonnes réponses la relancent.</li>
+ <li>Quatre paliers, un tous les 300 m, chacun aggravant la fatigue. Ligne franchie : étape suivante, 200 m de plus.</li></ul>
+ <h3>Désamorçage solo</h3>
+ <ul><li>Trois calibres : 3 modules en 2 min 30, 5 en 4 min, 7 en 5 min 15. Les modules se traitent dans l'ordre voulu.</li>
+ <li>Trois erreurs ou chrono à zéro, elle saute. Chaque erreur coûte aussi douze secondes.</li></ul>
+ <h3>Mode zen</h3>
+ <ul><li>Ni chrono ni points de vie. Les épreuves s'enchaînent et la fiche s'affiche à chaque réponse, juste ou fausse.</li></ul>
+ <h3>Six épreuves de plus</h3>
+ <ul><li>Chasse à l'intrus, Contrôle qualité (vrai ou faux), Aiguillage TCP/UDP, Appariement mémoire, Remise en ordre, Étage du service. Dix-huit épreuves au total.</li></ul>`},
+
+{v:"0.8",d:"26 septembre 2026",t:"Duel du Saboteur",h:`
+ <h3>Combat au tour par tour</h3>
+ <ul><li>Trois cartes par tour : une épreuve associée à un effet — attaque, soin, bouclier.</li>
+ <li>Plus on répond juste, plus l'effet est fort. Une épreuve sans faute devient un coup critique.</li>
+ <li><b>Usure</b> : une carte jouée perd du multiplicateur et en regagne au repos. Il faut tourner entre les épreuves.</li>
+ <li><b>Riposte</b> : cinq attaques chronométrées. Terminée assez vite, elle ne fait aucun dégât.</li>
+ <li>Trois boss qui s'enchaînent, trois difficultés qui modifient PV, dégâts, soins, chrono et seuil d'esquive.</li></ul>`},
+
+{v:"0.7",d:"26 septembre 2026",t:"Alerte rouge",h:`
+ <h3>Sabotage chronométré</h3>
+ <ul><li>Quatre tâches tirées au hasard à enchaîner avant la fin du compte à rebours : fils, téléchargement, code d'accès, séquence du réacteur, tri des flux.</li>
+ <li>Chaque erreur coûte trois secondes. Sabotage contenu : quarante-cinq secondes rendues, et l'alerte suivante est plus courte.</li></ul>`},
+
+{v:"0.6",d:"26 septembre 2026",t:"Les trois jeux d'arcade",h:`
+ <h3>Fin du questionnaire</h3>
+ <ul><li><b>Pare-feu</b> : les paquets tombent, il faut taper leur port avant l'impact.</li>
+ <li><b>Cellule de crise</b> : une menace avec barre de vie, un symptôme, cinq cartes outil.</li>
+ <li><b>La pile</b> : des éléments à envoyer sur la bonne couche OSI.</li>
+ <li>Vies, combos, vagues, sons et grades de Stagiaire à RSSI.</li></ul>`},
+
+{v:"0.1",d:"26 septembre 2026",t:"Première version",h:`
+ <h3>Au départ</h3>
+ <ul><li>QCM et flashcards sur les 30 sigles, les 33 services de la table des ports et les 7 couches du modèle OSI.</li>
+ <li>Quatre modes, suivi de maîtrise par thème, fiches de révision consultables.</li></ul>`}
+];
+const PATCH_V=PATCHES[0].v;
+{const t=$("#verTag");if(t)t.textContent="v"+PATCH_V;}
+let patchTab=0;
+function patchView(i,withTabs){
+  const P=PATCHES[i];
+  const tabs=withTabs?`<div class="tabs">${PATCHES.map((x,j)=>
+    `<button class="tab ${j===i?"on":""}" data-j="${j}"><b>v${x.v}</b><small>${x.d.replace(" 2026","")}</small></button>`).join("")}</div>`:"";
+  return `${tabs}<div class="pv">Version ${P.v} · ${P.d}</div><h3 style="margin-top:0">${P.t}</h3>${P.h}
+    ${withTabs?`<div class="note">La progression, les XP et les records sont stockés dans ce navigateur. Effacer les données du site les efface aussi.</div>`
+      :`<button class="btn" id="allPatch" style="width:100%;margin-top:14px">Voir tous les patch notes</button>`}`;
+}
+function renderPatch(i,withTabs){
+  patchTab=i;
+  $("#ovTitle").textContent=withTabs?"Patch notes":"Nouveautés";
+  $("#ovBody").innerHTML=patchView(i,withTabs);
+  $(".ovbox").scrollTop=0;
+  $("#ovBody").querySelectorAll(".tab").forEach(b=>b.onclick=()=>renderPatch(+b.dataset.j,true));
+  const all=$("#allPatch");if(all)all.onclick=()=>renderPatch(0,true);
+}
+function openPatch(latestOnly){
+  openOv(latestOnly?"Nouveautés":"Patch notes","",()=>renderPatch(0,!latestOnly));
   DB.patch=PATCH_V;save();
   const d=$("#newsBtn").querySelector(".dot9");if(d)d.remove();
 }
-$("#newsBtn").onclick=openPatch;
+$("#newsBtn").onclick=()=>openPatch(false);
 
 /* --- injection des boutons dans les écrans de jeu --- */
 const MODESCR={"s-fw":"fw","s-soc":"soc","s-duel":"duel","s-red":"red","s-mara":"mara","s-bomb":"bomb","s-duo":"duo","s-zen":"zen"};
@@ -2695,7 +2811,7 @@ $("#search").oninput=e=>paintFiches(e.target.value);
 paintRev();
 if(DB.patch!==PATCH_V){
   const d=document.createElement("span");d.className="dot9";$("#newsBtn").appendChild(d);
-  setTimeout(openPatch,450);
+  setTimeout(()=>openPatch(true),450);
 }
 </script>
 </body>

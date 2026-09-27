@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3UfLy95lr7_Up1WHKjOyvel8shbwSVhQntbtkTCXsnbooz_FMNKiz8mSRrLfYLEuJeTpYJw0UaNlmmfrh45QPOTfyC_DWlOKNHYuML9QdmYxJcyOl0vA46A9CWdRefpukBB5hCZJNfKADFwX5P65PgbliT7zp1TfB8_8jLaTEY1dcmdDDA0TeG2GhaG6iJXfqf54buNoXZi8Ku4if8TzyZS8InbRoO3cxybIVCOkq4mrMnZyPCfbXRsYfDtWHUF7sb-96cWScSNTn_ruAIDcpi5BCZOcITS1JstVmJOrO7umCX_x4d4V2Myhm_HaOCl_qmYpPz1BoagQN7icXKEE_NqQK05UOQw4Br5yj0RfMzq6Q8CbfkQ0zaV3JtlBkRx4U-F7tw5q5IxF-nYtUXcaLw" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jaGF0Z3B0LmNvbS9iYWNrZW5kLWFwaS9lc3R1YXJ5L2NvbnRlbnQ_aWQ9ZmlsZV8wMDAwMDAwMDMzMDQ4MWY0OWQ1Y2U0MjI2YzY3ZmI4NCZmbj1OdWl0JTI1MjBCbGFuY2hlJTI1MjAtJTI1MjBKdXN0ZSUyNTIwUG9ydCUyNTIwLSUyNTIwcGF0Y2glMjUyMG5vdGUlMjUyMGFjY2Vzc2libGUuaHRtbCZjZD1hdHRhY2htZW50JnRzPTQ5NzM2OSZwPWZzJmNpZD0xJnNpZz1mNmI4YTk5MDdjNDU5ODMzN2UwNzg1ZTZjNDAwY2QxMzE1ZTk2NjI5ZDg0MzcxYmFhNGQwZDRhODlhZDNjZTllJnY9MA"/><style>
 :root{
   --paper:#0e131b; --card:#171f2a; --card2:#1f2936; --ink:#e8eef7; --muted:#8fa0b4; --line:#2a3646;
   --l1:#8b7bd8; --l2:#5b6bc7; --l3:#5b9bd5; --l4:#52b39a; --l5:#77b255; --l6:#e8962f; --l7:#d2705c;
@@ -62,6 +62,26 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .chip b{color:var(--ink)}
 .chip.combo{color:#0e131b;background:var(--gold);border-color:transparent;font-weight:700}
 .hearts{font-size:15px;letter-spacing:2px;color:var(--bad)}
+
+/* ---------- juste port ---------- */
+.portquiz{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px 16px;margin-top:8px;text-align:center}
+.portquiz .pqservice{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(25px,7vw,34px);font-weight:800}
+.portquiz .pqmeta{color:var(--muted);font-size:14px;margin-top:4px}
+.portquiz .pqinputrow{display:flex;gap:8px;max-width:430px;margin:18px auto 10px}
+.portquiz input{flex:1;min-width:0;background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:14px 15px;
+  color:var(--ink);font-family:"IBM Plex Mono",monospace;font-size:24px;font-weight:700;text-align:center}
+.portquiz input:focus{border-color:var(--l6);outline:3px solid color-mix(in srgb,var(--l6) 25%,transparent)}
+.portquiz .pqsend{background:var(--l6);color:#0e131b;border-radius:11px;padding:0 19px;font-weight:800}
+.portquiz .pqfeedback{min-height:54px;display:flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:10px;padding:7px 12px;font-family:"Bricolage Grotesque",sans-serif;font-size:20px;font-weight:800;transition:all .15s;line-height:1.25;visibility:visible}
+.portquiz .pqfeedback.plus,.portquiz .pqfeedback.less,.portquiz .pqfeedback.good{animation:pqFeedback .18s ease-out}
+@keyframes pqFeedback{0%{transform:scale(.96);opacity:.45}100%{transform:scale(1);opacity:1}}
+.portquiz .pqfeedback.plus{color:var(--l3);border-color:var(--l3);background:color-mix(in srgb,var(--l3) 12%,transparent)}
+.portquiz .pqfeedback.less{color:var(--l6);border-color:var(--l6);background:color-mix(in srgb,var(--l6) 12%,transparent)}
+.portquiz .pqfeedback.good{color:var(--ok)}
+.portquiz .pqfeedback.bad{color:var(--bad)}
+.pqtimer{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:13px 0 0}
+.pqtimer i{display:block;height:100%;width:100%;background:var(--l6);transition:width .08s linear}
+.pqhint{color:var(--muted);font-size:12.5px;margin-top:10px}
 
 /* ---------- terrain ---------- */
 .field{position:relative;height:min(46vh,340px);background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -299,16 +319,21 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
   padding:0;backdrop-filter:blur(3px)}
 .ov[hidden]{display:none}
 .ovbox{background:var(--paper);border:1px solid var(--line);border-radius:16px 16px 0 0;width:100%;max-width:660px;
-  max-height:86vh;display:block;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+  max-height:86vh;height:86vh;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
-@supports(max-height:1dvh){.ovbox{max-height:86dvh}}
-@media(min-width:680px){.ov{align-items:center}.ovbox{border-radius:16px;max-height:84vh}
+.ovbody{padding:14px 16px calc(30px + env(safe-area-inset-bottom,0px));min-height:0;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y}
+.tabs{position:sticky;top:0;z-index:2;background:var(--paper);display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px;
+  padding:11px 0;margin:-14px 0 13px;border-bottom:1px solid var(--line);
+  max-height:150px;overflow-y:auto;overscroll-behavior:contain}
+.tabs .tab{min-width:0}
+@supports(max-height:1dvh){.ovbox{max-height:86dvh;height:86dvh}}
+@media(min-width:680px){.ov{align-items:center}.ovbox{border-radius:16px;max-height:84vh;height:84vh}
   @supports(max-height:1dvh){.ovbox{max-height:84dvh}}}
 .ovtop{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:14px 16px 11px;border-bottom:1px solid var(--line);background:var(--paper)}
 .ovtop b{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;letter-spacing:-.01em}
 .ovtop .iconbtn{flex:none}
-.ovbody{padding:14px 16px calc(30px + env(safe-area-inset-bottom,0px))}
 .ovbody p{margin:0 0 10px;font-size:14.5px;line-height:1.5}
 .ovbody h3{font-family:"Bricolage Grotesque",sans-serif;font-size:15px;margin:16px 0 6px}
 .ovbody h3:first-child{margin-top:0}
@@ -319,10 +344,7 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
 .note{background:var(--card);border-left:3px solid var(--l3);border-radius:0 9px 9px 0;padding:9px 12px;font-size:13.5px;color:var(--muted);margin-bottom:12px}
 .pv{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;background:var(--card2);border:1px solid var(--line);
   border-radius:99px;padding:2px 9px;margin-bottom:10px;color:var(--muted)}
-.tabs{position:sticky;top:53px;z-index:2;background:var(--paper);display:flex;gap:6px;overflow-x:auto;
-  padding:11px 0;margin:-14px 0 13px;border-bottom:1px solid var(--line);
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
-.tabs::-webkit-scrollbar{display:none}
+/* .tabs : navigation des versions, défilement défini avec l'overlay */
 .tab{flex:none;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;text-align:left;line-height:1.15}
 .tab b{display:block;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:700}
 .tab small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap}
@@ -486,6 +508,10 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
       <span class="ico">🧱</span>
       <span><b>Pare-feu</b><span>Les paquets tombent vers le réseau interne. Tape le bon numéro de port pour les router avant qu'ils touchent le sol.</span><span class="best" id="b-fw"></span></span>
     </button>
+    <button class="game" data-g="port" style="--c:var(--l3)">
+      <span class="ico">🎯</span>
+      <span><b>Le juste port</b><span>Un service est affiché. Trouve son port en 1 minute : « plus » si ton nombre est trop petit, « moins » s'il est trop grand.</span><span class="best" id="b-port"></span></span>
+    </button>
     <button class="game" data-g="soc" style="--c:var(--l7)">
       <span class="ico">🚨</span>
       <span><b>Cellule de crise</b><span>Une menace attaque le SI. Joue la bonne carte outil à chaque symptôme pour la faire tomber.</span><span class="best" id="b-soc"></span></span>
@@ -515,6 +541,26 @@ h2.sec{font-size:14.5px;margin:18px 0 9px;color:var(--muted)}
   <div class="field" id="fwField"><div class="grid"></div><div class="floor"></div><div class="flash" id="fwFlash"></div></div>
   <div class="pad" id="pad"></div>
   <div class="toast empty" id="fwToast">Tape le port, puis OK. Le clavier du téléphone comme celui de l'ordi fonctionnent.</div>
+</section>
+
+<!-- ================= LE JUSTE PORT ================= -->
+<section class="screen" id="s-port">
+  <div class="hud">
+    <button class="ghost" id="qPort">Quitter</button>
+    <span class="chip" id="portScore">Ports <b>0</b></span>
+    <span class="chip" id="portClock">1:00</span>
+  </div>
+  <div class="timer"><i id="portTimer"></i></div>
+  <div class="portquiz">
+    <div class="pqservice" id="portService">—</div>
+    <div class="pqmeta" id="portMeta">Trouve le numéro de port</div>
+    <div class="pqinputrow">
+      <input id="portInput" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5" autocomplete="off" aria-label="Numéro de port">
+      <button class="pqsend" id="portSend">OK</button>
+    </div>
+    <div class="pqfeedback" id="portFeedback"></div>
+    <div class="pqhint">Tu peux utiliser le pavé numérique ou le clavier. Le score compte uniquement les ports trouvés.</div>
+  </div>
 </section>
 
 <!-- ================= PILE OSI ================= -->
@@ -772,13 +818,13 @@ const PORTQ={
  "radius":{"1812":"demande d'accès","1813":"connexion serveur"},
  "SMTP sécurisé":{"465":"SMTPS implicite","587":"soumission"}
 };
-const multi=p=>p.nums.length>1&&PORTQ[p.s];
+const multi=p=>p.nums.length>1;
 function askPort(p,forced){
   if(!multi(p))return{n:p.nums[0],q:"",lbl:p.s,full:p.s};
-  const n=forced||p.nums[(Math.random()*p.nums.length)|0],q=PORTQ[p.s][n];
-  return{n,q,lbl:`${p.s} <em class="qual">${q}</em>`,full:`${p.s} (${q})`};
+  const n=forced||p.nums[(Math.random()*p.nums.length)|0],q=(PORTQ[p.s]&&PORTQ[p.s][n])||"";
+  return{n,q,lbl:q?`${p.s} <em class="qual">${q}</em>`:p.s,full:q?`${p.s} (${q})`:p.s};
 }
-const portLine=p=>multi(p)?p.nums.map(n=>`${n} = ${PORTQ[p.s][n]}`).join(" · "):p.p;
+const portLine=p=>multi(p)?p.nums.map(n=>`${n}${PORTQ[p.s]&&PORTQ[p.s][n]?` = ${PORTQ[p.s][n]}`:""}`).join(" · "):p.p;
 
 const OSI=[
  {n:1,nom:"Physique",role:"Encodage du signal, câblage et connecteurs, spécifications physiques."},
@@ -814,7 +860,7 @@ const CATN={reseau:"Réseau et sécurité périmétrique",systemes:"Systèmes et
 const $=s=>document.querySelector(s);
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const STORE="ais-nuit-de-garde-v1";
-let DB={xp:0,best:{mara:0,bomb:0,duo:0,zen:0,duel:0,red:0,fw:0,osi:0,soc:0},m:{}};
+let DB={xp:0,best:{mara:0,bomb:0,duo:0,zen:0,duel:0,red:0,fw:0,port:0,osi:0,soc:0},m:{}};
 try{Object.assign(DB,JSON.parse(localStorage.getItem(STORE)||"{}"))}catch(e){}
 function save(){try{localStorage.setItem(STORE,JSON.stringify(DB))}catch(e){}}
 function mark(id,ok){const m=DB.m[id]||{ok:0,ko:0};ok?m.ok++:m.ko++;DB.m[id]=m}
@@ -831,6 +877,7 @@ function resumeAll(){
   if(typeof MA!=="undefined"&&MA)MA.last=0;
   if(typeof FW!=="undefined"&&FW){FW.last=0;FW.lastSpawn=0}
   if(typeof OS!=="undefined"&&OS)OS.last=0;
+  if(typeof PQ!=="undefined"&&PQ&&PQ.end)PQ.end+=d;
 }
 let muted=false,AC=null;
 function beep(f,d,type){
@@ -964,6 +1011,114 @@ $("#pad").innerHTML=["1","2","3","4","5","6","7","8","9","del","0","ok"].map(d=>
 }).join("");
 $("#pad").onclick=e=>{const b=e.target.closest(".key");if(b)padType(b.dataset.d)};
 $("#qFw").onclick=()=>{cancelAnimationFrame(raf);raf=null;S=null;show("hub");paintHub()};
+
+/* =======================================================
+   JEU 2 — LE JUSTE PORT
+   ======================================================= */
+let PQ=null;
+
+function portProtocols(p){
+  const s=(p.p+" "+p.c).toLowerCase();
+  const out=[];
+  if(/\/tcp\b/.test(s))out.push("TCP");
+  if(/\/udp\b/.test(s))out.push("UDP");
+  return [...new Set(out)];
+}
+function portTargets(){
+  const out=[];
+  PORTS.forEach(p=>{
+    p.nums.forEach(n=>{
+      const protos=portProtocols(p);
+      out.push({
+        service:p.s,
+        port:Number(n),
+        detail:(PORTQ[p.s]&&PORTQ[p.s][n])||"",
+        protocols:protos,
+        note:p.c
+      });
+    });
+  });
+  return shuffle(out);
+}
+function startPort(){
+  newSession("port");
+  PQ={end:Date.now()+60000,pool:portTargets(),cur:null,locked:false,interval:null};
+  show("port");
+  $("#portInput").value="";
+  $("#portFeedback").className="pqfeedback";
+  $("#portFeedback").textContent="";
+  nextPort();
+  $("#portInput").focus();
+  PQ.interval=setInterval(tickPort,50);
+  tickPort();
+}
+function nextPort(){
+  if(!PQ||!S||S.kind!=="port")return;
+  if(!PQ.pool.length)PQ.pool=portTargets();
+  PQ.cur=PQ.pool.pop();
+  const t=PQ.cur;
+  $("#portService").textContent=t.service;
+  const bits=[];
+  if(t.detail)bits.push(t.detail);
+  if(t.protocols.length===1)bits.push(t.protocols[0]);
+  else if(t.protocols.length>1)bits.push(t.protocols.join(" / "));
+  $("#portMeta").textContent=bits.length?bits.join(" · "):"Trouve le numéro de port";
+  $("#portInput").value="";
+  $("#portFeedback").className="pqfeedback";
+  $("#portFeedback").textContent="";
+}
+function tickPort(){
+  if(!PQ||!S||S.kind!=="port")return;
+  if(PAUSED)return;
+  const left=Math.max(0,PQ.end-Date.now());
+  $("#portClock").textContent=`${Math.floor(left/1000)}s`;
+  $("#portTimer").style.width=(left/60000*100)+"%";
+  if(left<=0)endPort();
+}
+function submitPort(){
+  if(!PQ||!PQ.cur||!S||S.kind!=="port"||PQ.locked||PAUSED)return;
+  const raw=$("#portInput").value.trim();
+  if(!/^\d{1,5}$/.test(raw))return;
+  const guess=Number(raw),target=PQ.cur.port;
+  if(guess===target){
+    PQ.locked=true;
+    S.hits++;
+    S.score=S.hits;
+    mark("port:"+PQ.cur.service,true);
+    sGood();
+    $("#portFeedback").className="pqfeedback good";
+    $("#portFeedback").textContent=`✓ CORRECT ! Le port est ${target}`;
+    $("#portScore").innerHTML=`Ports <b>${S.hits}</b>`;
+    setTimeout(()=>{
+      if(!PQ||!S||S.kind!=="port")return;
+      PQ.locked=false;
+      nextPort();
+      $("#portInput").focus();
+    },700);
+  }else{
+    const dir=guess<target?"⬆ PLUS — le port recherché est plus grand":"⬇ MOINS — le port recherché est plus petit";
+    $("#portFeedback").className="pqfeedback "+(guess<target?"plus":"less");
+    $("#portFeedback").textContent=dir;
+    $("#portInput").value="";
+    $("#portInput").focus();
+    sPop();
+  }
+}
+function endPort(){
+  if(!PQ||!S||S.kind!=="port")return;
+  if(PQ.interval){clearInterval(PQ.interval);PQ.interval=null}
+  PQ=null;
+  S.note="1 minute";
+  endRun();
+}
+$("#portSend").onclick=submitPort;
+$("#portInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){e.preventDefault();submitPort()}
+});
+$("#qPort").onclick=()=>{
+  if(PQ&&PQ.interval)clearInterval(PQ.interval);
+  PQ=null;S=null;show("hub");paintHub();
+};
 
 /* =======================================================
    JEU 2 — LA PILE OSI
@@ -1133,6 +1288,18 @@ document.addEventListener("keydown",e=>{
     if(/^[0-9]$/.test(e.key))padType(e.key);
     else if(e.key==="Backspace"){e.preventDefault();padType("del")}
     else if(e.key==="Enter")padType("ok");
+  }else if($("#s-port").classList.contains("on")){
+    if(/^[0-9]$/.test(e.key)){
+      e.preventDefault();
+      const inp=$("#portInput");
+      if(document.activeElement!==inp)inp.focus();
+      if(inp.value.length<5)inp.value+=e.key;
+    }else if(e.key==="Backspace"){
+      const inp=$("#portInput");
+      if(document.activeElement!==inp)e.preventDefault();
+    }else if(e.key==="Enter"){
+      e.preventDefault();submitPort();
+    }
   }else if($("#s-osi").classList.contains("on")){
     if(/^[1-7]$/.test(e.key))resolveOSI(+e.key);
   }else if($("#s-soc").classList.contains("on")){
@@ -2526,7 +2693,7 @@ $("#openManual").onclick=()=>openManual(null);
 /* =======================================================
    HUB
    ======================================================= */
-const STARTERS={fw:startFW,soc:startSOC,red:startRED,duel:startDUEL,mara:startMARA,bomb:startBOMB,duo:startDUO,zen:startZEN};
+const STARTERS={fw:startFW,port:startPort,soc:startSOC,red:startRED,duel:startDUEL,mara:startMARA,bomb:startBOMB,duo:startDUO,zen:startZEN};
 function start(kind){(STARTERS[kind]||startDUEL)()}
 document.querySelectorAll(".game").forEach(b=>b.onclick=()=>start(b.dataset.g));
 function paintHub(){
@@ -2540,6 +2707,7 @@ function paintHub(){
   $("#b-duel").textContent="Record "+(DB.best.duel||0);
   $("#b-red").textContent="Record "+(DB.best.red||0);
   $("#b-fw").textContent="Record "+(DB.best.fw||0);
+  $("#b-port").textContent="Record "+(DB.best.port||0);
   $("#b-soc").textContent="Record "+(DB.best.soc||0);
 }
 paintHub();
@@ -2550,7 +2718,7 @@ $("#thBtn").onclick=()=>{
 $("#sndBtn").onclick=()=>{muted=!muted;$("#sndBtn").textContent=muted?"🔇":"🔊"};
 $("#resetBtn").onclick=()=>{
   if(confirm("Efface les XP, les records et la mémoire de tes erreurs sur cet appareil. Irréversible. Continuer ?")){
-    DB={xp:0,best:{mara:0,bomb:0,duo:0,zen:0,duel:0,red:0,fw:0,osi:0,soc:0},m:{}};save();paintHub();
+    DB={xp:0,best:{mara:0,bomb:0,duo:0,zen:0,duel:0,red:0,fw:0,port:0,osi:0,soc:0},m:{}};save();paintHub();
   }
 };
 $("#openFiches").onclick=()=>{paintFiches("");show("fiches")};
@@ -2658,6 +2826,18 @@ function openRules(k){const r=RULES[k];if(r)openOv(r.t,r.h)}
 
 /* --- patch notes --- */
 const PATCHES=[
+{v:"1.5",d:"27 septembre 2026",t:"Juste Port",h:`
+ <h3>🎯 Nouveau mini-jeu</h3>
+ <ul><li>Un nouveau mode fait son entrée : <b>Juste Port</b>.</li>
+ <li>Le but est de trouver un maximum de ports en <b>60 secondes</b>.</li>
+ <li>Le fonctionnement reprend le principe du <b>Juste Prix</b> : après chaque proposition, le jeu indique si le port recherché est <b>plus grand</b> ou <b>plus petit</b>.</li>
+ <li>Chaque port trouvé rapporte <b>1 point</b> et le meilleur score est enregistré.</li></ul>
+ <h3>🎨 Feedback</h3>
+ <ul><li><b>PLUS</b> s'affiche en bleu lorsque le port recherché est supérieur à la proposition.</li>
+ <li><b>MOINS</b> s'affiche en orange lorsque le port recherché est inférieur.</li>
+ <li><b>CORRECT</b> s'affiche en vert lorsque le port est trouvé.</li>
+ <li>Après une tentative, le nombre saisi est automatiquement effacé pour permettre une nouvelle proposition.</li></ul>`},
+
 {v:"1.4",d:"27 septembre 2026",t:"Correctifs d'affichage",h:`
  <h3>Correctif</h3>
  <ul><li>Le <b>?</b> des cartes s'affichait collé en haut à gauche de son rond : une règle de style plus spécifique écrasait son centrage. Il est maintenant parfaitement centré.</li>
@@ -2763,7 +2943,11 @@ function renderPatch(i,withTabs){
   patchTab=i;
   $("#ovTitle").textContent=withTabs?"Patch notes":"Nouveautés";
   $("#ovBody").innerHTML=patchView(i,withTabs);
-  $(".ovbox").scrollTop=0;
+  $("#ovBody").scrollTop=0;
+
+  // Toutes les versions restent directement accessibles dans la grille.
+  // Le contenu du patch, lui, défile verticalement dans la fenêtre.
+
   $("#ovBody").querySelectorAll(".tab").forEach(b=>b.onclick=()=>renderPatch(+b.dataset.j,true));
   const all=$("#allPatch");if(all)all.onclick=()=>renderPatch(0,true);
 }

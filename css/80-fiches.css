@@ -1,0 +1,9 @@
+/* fiches */
+.search{width:100%;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;color:var(--ink);font-size:15px;margin-bottom:12px}
+.fiche{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:3px 11px 11px 3px;padding:10px 13px;margin-bottom:6px}
+.fiche .h{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.fiche .h b{font-size:15px}.fiche .h span{font-size:13px;color:var(--muted)}
+.fiche p{margin:3px 0 0;font-size:13.5px;color:var(--muted);line-height:1.45}
+.grp{font-size:13px;font-weight:600;color:var(--muted);margin:16px 0 7px}
+.lead{color:var(--muted);font-size:14.5px;max-width:62ch}
+@media (prefers-reduced-motion:reduce){.game:hover{transform:none}}

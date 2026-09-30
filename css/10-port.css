@@ -1,0 +1,20 @@
+/* ---------- juste port ---------- */
+.portquiz{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px 16px;margin-top:8px;text-align:center}
+.portquiz .pqservice{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(25px,7vw,34px);font-weight:800}
+.portquiz .pqmeta{color:var(--muted);font-size:14px;margin-top:4px}
+.portquiz .pqinputrow{display:flex;gap:8px;max-width:430px;margin:18px auto 10px}
+.portquiz input{flex:1;min-width:0;background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:14px 15px;
+  color:var(--ink);font-family:"IBM Plex Mono",monospace;font-size:24px;font-weight:700;text-align:center}
+.portquiz input:focus{border-color:var(--l6);outline:3px solid color-mix(in srgb,var(--l6) 25%,transparent)}
+.portquiz .pqsend{background:var(--l6);color:#0e131b;border-radius:11px;padding:0 19px;font-weight:800}
+.portquiz .pqfeedback{min-height:54px;display:flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:10px;padding:7px 12px;font-family:"Bricolage Grotesque",sans-serif;font-size:20px;font-weight:800;transition:all .15s;line-height:1.25;visibility:visible}
+.portquiz .pqfeedback.plus,.portquiz .pqfeedback.less,.portquiz .pqfeedback.good{animation:pqFeedback .18s ease-out}
+@keyframes pqFeedback{0%{transform:scale(.96);opacity:.45}100%{transform:scale(1);opacity:1}}
+.portquiz .pqfeedback.plus{color:var(--l3);border-color:var(--l3);background:color-mix(in srgb,var(--l3) 12%,transparent)}
+.portquiz .pqfeedback.less{color:var(--l6);border-color:var(--l6);background:color-mix(in srgb,var(--l6) 12%,transparent)}
+.portquiz .pqfeedback.good{color:var(--ok)}
+.portquiz .pqfeedback.bad{color:var(--bad)}
+.pqtimer{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:13px 0 0}
+.pqtimer i{display:block;height:100%;width:100%;background:var(--l6);transition:width .08s linear}
+.pqhint{color:var(--muted);font-size:12.5px;margin-top:10px}
+

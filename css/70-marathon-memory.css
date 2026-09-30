@@ -1,0 +1,29 @@
+/* marathon */
+.track2{position:relative;height:48px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.track2 i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,color-mix(in srgb,var(--l4) 28%,transparent),color-mix(in srgb,var(--ok) 26%,transparent))}
+.track2 .marks{position:absolute;inset:0}
+.track2 .marks b{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
+.track2 .runner{position:absolute;top:9px;left:0;font-size:24px;transform:translateX(-50%);z-index:2}
+.track2 .flag{position:absolute;right:7px;top:12px;font-size:19px;opacity:.55}
+.track2.tired{border-color:var(--bad)}
+
+/* bombe */
+.bombgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.bmod{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px 11px;text-align:left;font-size:13.5px;font-weight:600;line-height:1.25}
+.bmod small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:2px}
+.bmod:hover{border-color:var(--l6)}
+.bmod.act{border-color:var(--l6);box-shadow:inset 0 0 0 1px var(--l6)}
+.bmod.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 13%,transparent);opacity:.75}
+.leds{display:flex;gap:5px;align-items:center}
+.led{width:13px;height:13px;border-radius:99px;background:var(--line);border:1px solid var(--line)}
+.led.on{background:var(--bad);border-color:var(--bad);box-shadow:0 0 8px var(--bad)}
+
+/* memory */
+.memhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;font-size:13.5px;color:var(--muted)}
+.memhead b{color:var(--l6);font-family:"IBM Plex Mono",monospace}
+.mem{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.memc{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:11px 9px;min-height:66px;
+  font-size:12.5px;line-height:1.3;display:grid;place-items:center;text-align:center}
+.memc.up{border-color:var(--l6);background:var(--card);font-weight:600}
+.memc.done{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 13%,transparent);opacity:.75}
+

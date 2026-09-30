@@ -1,0 +1,56 @@
+/* overlays */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(6,10,16,.72);display:flex;align-items:flex-end;justify-content:center;
+  padding:0;backdrop-filter:blur(3px)}
+.ov[hidden]{display:none}
+.ovbox{background:var(--paper);border:1px solid var(--line);border-radius:16px 16px 0 0;width:100%;max-width:660px;
+  max-height:86vh;height:86vh;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;box-shadow:0 -10px 40px rgba(0,0,0,.4)}
+.ovbody{padding:14px 16px calc(30px + env(safe-area-inset-bottom,0px));min-height:0;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y}
+.tabs{position:sticky;top:0;z-index:2;background:var(--paper);display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px;
+  padding:11px 0;margin:-14px 0 13px;border-bottom:1px solid var(--line);
+  max-height:150px;overflow-y:auto;overscroll-behavior:contain}
+.tabs .tab{min-width:0}
+@supports(max-height:1dvh){.ovbox{max-height:86dvh;height:86dvh}}
+@media(min-width:680px){.ov{align-items:center}.ovbox{border-radius:16px;max-height:84vh;height:84vh}
+  @supports(max-height:1dvh){.ovbox{max-height:84dvh}}}
+.ovtop{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 16px 11px;border-bottom:1px solid var(--line);background:var(--paper)}
+.ovtop b{font-family:"Bricolage Grotesque",sans-serif;font-size:17px;letter-spacing:-.01em}
+.ovtop .iconbtn{flex:none}
+.ovbody p{margin:0 0 10px;font-size:14.5px;line-height:1.5}
+.ovbody h3{font-family:"Bricolage Grotesque",sans-serif;font-size:15px;margin:16px 0 6px}
+.ovbody h3:first-child{margin-top:0}
+.ovbody ul{margin:0 0 12px;padding-left:19px;font-size:14.5px;line-height:1.55}
+.ovbody li{margin-bottom:4px}
+.ovbody .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 11px;font-size:14px;margin-bottom:12px;align-items:baseline}
+.ovbody .kv b{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--l6);white-space:nowrap}
+.note{background:var(--card);border-left:3px solid var(--l3);border-radius:0 9px 9px 0;padding:9px 12px;font-size:13.5px;color:var(--muted);margin-bottom:12px}
+.pv{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;background:var(--card2);border:1px solid var(--line);
+  border-radius:99px;padding:2px 9px;margin-bottom:10px;color:var(--muted)}
+/* .tabs : navigation des versions, défilement défini avec l'overlay */
+.tab{flex:none;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;text-align:left;line-height:1.15}
+.tab b{display:block;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:700}
+.tab small{display:block;font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap}
+.tab.on{border-color:var(--l6);background:var(--card2)}
+.tab.on b{color:var(--l6)}
+.game span.qbtn,.qbtn{position:absolute;top:6px;right:6px;width:34px;height:34px;box-sizing:border-box;
+  border-radius:99px;border:1px solid var(--line);background:var(--card2);color:var(--muted);
+  font-size:15px;font-weight:700;line-height:1;margin:0;padding:0;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  z-index:2;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.qbtn:hover{color:var(--ink);border-color:var(--c)}
+.game{position:relative}
+.revsw{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:11px 13px;margin-top:12px;text-align:left;width:100%}
+.revsw .sw2{width:40px;height:23px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.revsw .sw2::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:99px;background:var(--muted);transition:left .15s,background .15s}
+.revsw.on .sw2{background:color-mix(in srgb,var(--ok) 45%,transparent)}
+.revsw.on .sw2::after{left:20px;background:var(--ok)}
+.revsw .t2{flex:1;min-width:0}
+.revsw b{display:block;font-size:14.5px}
+.revsw small{display:block;color:var(--muted);font-size:12.5px;line-height:1.3}
+.verline{margin:18px 0 0;text-align:center;font-size:12px;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.verline b{color:var(--l6)}
+.dot9{position:absolute;top:-2px;right:-2px;width:9px;height:9px;border-radius:99px;background:var(--bad);border:2px solid var(--paper)}
+

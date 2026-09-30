@@ -1,0 +1,63 @@
+/* ---------- alerte rouge ---------- */
+.alert{position:relative;background:color-mix(in srgb,var(--bad) 16%,var(--card));border:1px solid var(--bad);
+  border-radius:13px;padding:11px 14px;display:flex;align-items:center;gap:11px;margin-bottom:10px;overflow:hidden}
+.alert::after{content:"";position:absolute;inset:0;background:var(--bad);opacity:0;animation:pulse 1.6s infinite;pointer-events:none}
+@keyframes pulse{0%,100%{opacity:0}50%{opacity:.14}}
+.alert .sir{font-size:20px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.alert .txt{flex:1;min-width:0}
+.alert b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:15px;letter-spacing:.01em}
+.alert small{color:var(--muted);font-size:12.5px}
+.alert .clock{font-family:"IBM Plex Mono",monospace;font-size:24px;font-weight:700}
+.alert.urgent .clock{color:var(--bad)}
+.dots{display:flex;gap:6px;margin-bottom:12px}
+.dots i{flex:1;height:6px;border-radius:99px;background:var(--line)}
+.dots i.done{background:var(--ok)}
+.dots i.now{background:var(--l6)}
+.taskbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 14px;min-height:300px}
+.tname{font-family:"Bricolage Grotesque",sans-serif;font-size:16px;margin-bottom:3px}
+.tsub{font-size:13px;color:var(--muted);margin-bottom:13px}
+
+/* fils */
+.wires{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
+.wires svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.wcol{display:flex;flex-direction:column;gap:9px;position:relative;z-index:1}
+.wire{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--line);
+  border-radius:9px;padding:9px 10px;font-size:13.5px;text-align:left;line-height:1.25;min-height:52px}
+.wire.l{justify-content:space-between}
+.wire .dot{width:11px;height:11px;border-radius:99px;background:var(--c,var(--line));flex:none;box-shadow:0 0 0 2px var(--card2)}
+.wire.sel{border-color:var(--l6);box-shadow:0 0 0 2px color-mix(in srgb,var(--l6) 40%,transparent)}
+.wire.done{opacity:.55;border-color:var(--ok)}
+.wire.err{animation:wshake .3s;border-color:var(--bad)}
+@keyframes wshake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.wire b{font-family:"IBM Plex Mono",monospace;font-size:14px}
+
+/* téléchargement */
+.dlbar{height:22px;background:var(--card2);border:1px solid var(--line);border-radius:7px;overflow:hidden;position:relative}
+.dlbar i{display:block;height:100%;background:repeating-linear-gradient(135deg,var(--l4) 0 9px,color-mix(in srgb,var(--l4) 70%,#000) 9px 18px);width:0;transition:width .4s}
+.dlpct{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);text-align:right;margin:5px 0 12px}
+.subject{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:13px;text-align:center;
+  font-size:19px;font-weight:600;margin-bottom:11px}
+.lrows{display:flex;flex-direction:column-reverse;gap:4px}
+.lrow{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:center;background:color-mix(in srgb,var(--c) 20%,transparent);
+  border:1px solid color-mix(in srgb,var(--c) 50%,transparent);border-left:4px solid var(--c);border-radius:2px 7px 7px 2px;
+  padding:6px 9px;font-size:13.5px;font-weight:600;text-align:left}
+.lrow .num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--c)}
+.lrow:hover{background:color-mix(in srgb,var(--c) 35%,transparent)}
+
+/* réacteur */
+.seq{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seqbtn{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px 10px;font-size:14px;font-weight:600}
+.seqbtn.on{background:var(--ok);color:#0b1117;border-color:transparent}
+.seqbtn.no{border-color:var(--bad);animation:wshake .3s}
+.seqbtn:disabled{opacity:.4}
+
+/* flux */
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chipbtn{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:left}
+.chipbtn b{display:block;font-size:14.5px}
+.chipbtn span{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+.chipbtn.hit{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,transparent)}
+.chipbtn.miss{border-color:var(--bad);animation:wshake .3s}
+.chipbtn:disabled{opacity:.5}
+
